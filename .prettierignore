@@ -1,0 +1,6 @@
+*.snap
+*.sh
+*.md
+
+lib
+package.json

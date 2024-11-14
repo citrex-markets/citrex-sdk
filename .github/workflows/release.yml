@@ -1,0 +1,69 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  release:
+    name: Release
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Get version from package.json
+        id: version
+        run: |
+          package_version=$(jq -r .version package.json)
+          echo "version=${package_version}" >> $GITHUB_OUTPUT
+        shell: bash
+
+      - name: Get change log notes
+        id: changes
+        run: |
+          version=$(jq -r .version package.json)
+          message=$(awk "/$version/{flag=1;next}/##/{flag=0}flag" CHANGELOG.md | grep .)
+          echo "${message}" >> body.md
+        shell: bash
+
+      - name: Remove postinstall script
+        run: npm pkg set scripts.postinstall="echo removed in build"
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Yarn install
+        run: yarn install --frozen-lockfile
+
+      - name: Build package
+        run: yarn build
+
+      - name: Clean package.json
+        run: |
+          echo "$(jq 'del(.scripts, .devDependencies)' package.json)" > package.json
+        shell: bash
+
+      - name: Create release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.version.outputs.version }}
+          release_name: Release ${{ steps.version.outputs.version }}
+          body_path: body.md
+          draft: false
+          prerelease: false
+
+      - name: Publish to NPM
+        run: yarn publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

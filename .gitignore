@@ -1,0 +1,27 @@
+/node_modules
+
+# Ignore test-related files
+/coverage.data
+/coverage/
+
+# Build files
+/lib
+.tsup
+/src/sandbox.ts
+*.tgz
+
+# debug
+yarn-debug.log*
+yarn-error.log*
+
+# env files
+.env*
+.env
+
+# IDE
+.vscode
+*.txt
+
+# stryker temp files
+.stryker-tmp
+/reports/

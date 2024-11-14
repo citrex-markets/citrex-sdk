@@ -1,0 +1,99 @@
+{
+  "name": "rysk-sdk",
+  "version": "1.0.0",
+  "description": "A TypeScript SDK for Rysk finance.",
+  "keywords": [
+    "Rysk",
+    "api",
+    "crypto",
+    "cryptocurrency",
+    "dex",
+    "exchange",
+    "EVM",
+    "orderbook",
+    "perps",
+    "rest",
+    "trading",
+    "vault"
+  ],
+  "homepage": "https://rysk.finance/",
+  "bugs": "https://github.com/MeanBoyCousin/rysk-sdk/issues",
+  "repository": "https://github.com/MeanBoyCousin/rysk-sdk.git",
+  "license": "MIT",
+  "author": {
+    "name": "Tim Dunphy",
+    "email": "tim@rysk.finance",
+    "web": "https://rysk.finance/"
+  },
+  "contributors": [
+    {
+      "name": "Tim Dunphy",
+      "email": "tim@rysk.finance"
+    }
+  ],
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js"
+    },
+    "./enums": {
+      "types": "./lib/enums.d.ts",
+      "import": "./lib/enums.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./lib/index.js",
+  "module": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "tsup --dts",
+    "dev": "tsup --watch --no-dts",
+    "postinstall": "husky",
+    "lint": "eslint",
+    "sandbox": "tsx src/sandbox.ts",
+    "test": "vitest -c vitest/vitest.config",
+    "test:cov": "yarn test --coverage --silent",
+    "test:mutations": "stryker run",
+    "upgrade-deps": "yarn upgrade-interactive --latest"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "pino": "^8.19.0",
+    "pino-pretty": "^11.0.0",
+    "viem": "^2.9.9"
+  },
+  "devDependencies": {
+    "@stryker-mutator/api": "^8.2.6",
+    "@stryker-mutator/core": "^8.2.6",
+    "@stryker-mutator/typescript-checker": "^8.2.6",
+    "@stryker-mutator/vitest-runner": "^8.2.6",
+    "@types/node": "^18.19.29",
+    "@typescript-eslint/eslint-plugin": "^7.5.0",
+    "@typescript-eslint/parser": "^7.5.0",
+    "@vitest/coverage-v8": "^1.4.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jsdoc": "^48.2.3",
+    "eslint-plugin-unused-imports": "^3.1.0",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
+    "markdownlint-cli": "^0.39.0",
+    "prettier": "^3.2.5",
+    "ts-node": "^10.9.2",
+    "tsup": "^8.0.2",
+    "tsx": "^4.7.2",
+    "typescript": "^5.4.3",
+    "typescript-eslint": "^7.5.0",
+    "vitest": "^1.4.0",
+    "vitest-fetch-mock": "^0.2.2"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

@@ -6,7 +6,7 @@
 ![NPM Version](https://img.shields.io/npm/v/rysk-sdk?style=flat-square&label=NPM&color=%234177f6&link=https://www.npmjs.com/package/rysk-sdk)
 ![Discord](https://img.shields.io/discord/912754653756796950?style=flat-square&logo=discord&logoColor=%23fff&label=Discord&color=%234177f6&link=https://discord.gg/Az8dEA8ARs)
 
-Interact with the [Rysk decentralized exchange](https://app.rysk.finance/) and trade pre-launch tokens, BTC, ETH, SOL, BLUR and other cryptocurrency perp futures with leverage. Live on [Arbitrum](https://arbitrum.io/).
+Interact with the [Rysk decentralized exchange](https://app.rysk.finance/) and trade BTC, ETH, SOL and other cryptocurrency perp futures with leverage. Live on [Arbitrum](https://arbitrum.io/).
 
 ```bash
 npm install rysk-sdk
@@ -22,7 +22,7 @@ bun install rysk-sdk
 
 Getting started is a simple case of creating a .env file, importing the Client and instantiating an instance.
 
-The .env file should contain the necessary contract addresses to interact with the DEX. You can find an up to date copy of the relevant contract addresses in the [Rysk API docs](https://rysk.readme.io/reference/contract-addresses).
+The .env file should contain the necessary contract addresses to interact with the DEX. An up-to-date copy of the relevant contract addresses can be found in the [Rysk API docs](https://rysk.readme.io/reference/contract-addresses).
 
 ```sh
 CIAO_MAINNET_ADDRESS=<...>
@@ -42,12 +42,12 @@ const Client = new RyskSDK(MY_PRIVATE_KEY)
 
 The client can also accept a configuration object as the second parameter.
 
-| Key          | Type                     | Default                        | Description                                                               |
-|--------------|--------------------------|--------------------------------|---------------------------------------------------------------------------|
-| debug        | `boolean`                | `false`                          | Used to enable debug mode when running the client for additional logging. |
-| environment  | `'testnet' \| 'mainnet'` | `'testnet'`                      | Specify the environment you wish to trade in.                             |
-| rpc          | `string`                 | `Blast RPC based on environment` | Specify a custom RPC url to used.                                         |
-| subAccountId | `number`                 | `1`                              | Specify a sub-account ID to use. This can be from 1-255.                  |
+| Key          | Type                     | Default                           | Description                                                               |
+|--------------|--------------------------|-----------------------------------|---------------------------------------------------------------------------|
+| debug        | `boolean`                | `false`                             | Used to enable debug mode when running the client for additional logging. |
+| environment  | `'testnet' \| 'mainnet'` | `'testnet'`                         | Specify the environment you wish to trade in.                             |
+| rpc          | `string`                 | `Arbitrum RPC based on environment` | Specify a custom RPC url to used.                                         |
+| subAccountId | `number`                 | `1`                                 | Specify a sub-account ID to use. This can be from 1-255.                  |
 
 ```ts
 import RyskSDK from 'rysk-sdk'
@@ -65,7 +65,7 @@ const Client = new RyskSDK(MY_PRIVATE_KEY)
 
 ## Getting started
 
-To get started, you will need to deposit funds and make a trade. Let's look at how we can do that now. If you're in need of testnet funds, please head over to the [Rysk Discord server](https://discord.gg/Az8dEA8ARs) where we will be happy to help.
+To get started, you will need to deposit funds and make a trade. Let's look at how we can do that now. If you need testnet funds, please head to the [Rysk Discord server](https://discord.gg/Az8dEA8ARs) where we will happily help.
 
 ```ts
 import RyskSDK from 'rysk-sdk'
@@ -109,7 +109,7 @@ A series of useful enums can be imported from `rysk-sdk/enums` and used to help 
 
 ### Further support
 
-For more detailed information on specific endpoints, please refer to the official [Rysk API docs](https://rysk.readme.io/reference/rysk-api-introduction). Each function in this client contains detailed JSDocs on arguments and return types to aid the developer experience as well as links to their respective endpoints within the official docs.
+For more information on specific endpoints, please refer to the official [Rysk API docs](https://rysk.readme.io/reference/rysk-api-introduction). Each function in this client contains detailed JSDocs on arguments and return types to aid the developer experience and links to their respective endpoints within the official docs.
 
 ## Contributing
 
@@ -117,7 +117,7 @@ Want to contribute? Check out that [contributing guide](https://github.com/MeanB
 
 ## Support
 
-Having troubles getting started? Feel free to join us on the official [Rysk Discord server](https://discord.gg/Az8dEA8ARs) where you can get full support from the team.
+Trouble getting started? Feel free to join us on the official [Rysk Discord server](https://discord.gg/Az8dEA8ARs) where you can get full support from the team.
 
 ## License
 

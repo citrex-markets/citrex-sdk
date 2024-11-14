@@ -20,7 +20,17 @@ bun install rysk-sdk
 
 ## Usage
 
-Getting started is a simple case of importing the Client and instantiating an instance.
+Getting started is a simple case of creating a .env file, importing the Client and instantiating an instance.
+
+The .env file should contain the necessary contract addresses to interact with the DEX. You can find an up to date copy of the relevant contract addresses in the [Rysk API docs](https://rysk.readme.io/reference/contract-addresses).
+
+```sh
+CIAO_MAINNET_ADDRESS=<...>
+ORDER_DISPATCH_MAINNET_ADDRESS=<...>
+
+CIAO_TESTNET_ADDRESS=<...>
+ORDER_DISPATCH_TESTNET_ADDRESS=<...>
+```
 
 ```ts
 import RyskSDK from 'rysk-sdk'

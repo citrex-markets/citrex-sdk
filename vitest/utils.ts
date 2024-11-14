@@ -5,8 +5,8 @@ export const address = '0xb47B0b1e44B932Ae9Bb01817E7010A553A965Ea8'
 export const privateKey = '0xa608cd43cbc3d59bc51443f475b96a4654e956d6cc91783598a8e76a34000174'
 
 // Contract addresses
-export const ciaoAddress = '0x0c3b9472b3923cfe199bae24b5f5bd75fad2bae9'
-export const USDC = '0x79a59c326c715ac2d31c169c85d1232319e341ce'
+export const ciaoAddress = '0x71728FDDF90233cc35D61bec7858d7c42A310ACe'
+export const USDC = '0xb8be1401e65dc08bfb8f832fc1a27a16ca821b05'
 
 // API response mocks
 export const productsData = [
@@ -28,7 +28,7 @@ export const productsData = [
     maintenanceLongWeight: '950000000000000000',
     maintenanceShortWeight: '1050000000000000000',
     baseAssetAddress: '0xdc2f16a474a969056e6a559629b46d01f8675a1a',
-    quoteAssetAddress: '0x79a59c326c715ac2d31c169c85d1232319e341ce',
+    quoteAssetAddress: '0xb8be1401e65dc08bfb8f832fc1a27a16ca821b05',
     markPrice: '72581488537710140836821',
   },
   {
@@ -49,7 +49,7 @@ export const productsData = [
     maintenanceLongWeight: '970000000000000000',
     maintenanceShortWeight: '1030000000000000000',
     baseAssetAddress: '0x4200000000000000000000000000000000000023',
-    quoteAssetAddress: '0x79a59c326c715ac2d31c169c85d1232319e341ce',
+    quoteAssetAddress: '0xb8be1401e65dc08bfb8f832fc1a27a16ca821b05',
     markPrice: '3399999999999999999772',
   },
 ]
@@ -232,7 +232,7 @@ export const mockBalances = [
   {
     account: '0x23a90125d8b71a6f18c905d1cce0579b3e589f90',
     subaccount: 1,
-    asset: '0x79a59c326c715ac2d31c169c85d1232319e341ce',
+    asset: '0xb8be1401e65dc08bfb8f832fc1a27a16ca821b05',
     quantity: '100000000000000000000',
     pendingWithdrawal: '0',
   },

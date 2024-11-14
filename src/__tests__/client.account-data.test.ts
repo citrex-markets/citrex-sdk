@@ -5,7 +5,14 @@ import { beforeEach, describe, expect, it, vi } from 'vitest'
 
 import RyskSDK from 'src'
 import EIP712 from 'src/ABI/EIP712'
-import { address, mockBalances, mockOpenOrders, mockPositions, privateKey } from 'vitest/utils'
+import {
+  address,
+  mockAccountHealth,
+  mockBalances,
+  mockOpenOrders,
+  mockPositions,
+  privateKey,
+} from 'vitest/utils'
 
 describe('The RyskSDK', () => {
   beforeEach(() => {
@@ -350,6 +357,70 @@ describe('The RyskSDK', () => {
       expect(result).toEqual({
         error: { message: 'An unknown error occurred. Try enabling debug mode for mode detail.' },
         orders: [],
+      })
+    })
+  })
+
+  describe('account health endpoint', () => {
+    it('should allow a user to successfully get their account health', async () => {
+      fetchMock.mockResponse(
+        JSON.stringify({
+          error: '',
+          success: true,
+          value: mockAccountHealth,
+        }),
+      )
+
+      const Client = new RyskSDK(privateKey)
+
+      const result = await Client.getAccountHealth()
+
+      expect(fetchMock.mock.calls[0][0]).toMatch(
+        /.+\/account-health\?account=0xb47B0b1e44B932Ae9Bb01817E7010A553A965Ea8&subAccountId=1$/,
+      )
+      expect(result).toEqual({
+        accountHealth: {
+          equity: '521853167994700001958',
+          initialAccountMarginRatio: '29850665588517496',
+          maintenanceAccountMarginRatio: '14925332794258748',
+          initialHealth: '506275503590581770462',
+          maintenanceHealth: '514064335792640886211',
+          leverage: '20000000000000000000',
+          totalPnl: '41880167994700001958',
+          initialMarginUsed: '15577664404118231496',
+          maintenanceMarginUsed: '7788832202059115748',
+          initialMarginAvailable: '506275503590581770462',
+          maintenanceMarginAvailable: '514064335792640886210',
+          pendingWithdrawal: '40000000000000000000',
+        },
+      })
+    })
+
+    it('should handle an error during the process', async () => {
+      fetchMock.mockResponse(JSON.stringify({ error: 'A known error occurred', success: false }))
+
+      const Client = new RyskSDK(privateKey)
+
+      const result = await Client.getAccountHealth()
+
+      expect(result).toEqual({
+        accountHealth: {},
+        error: {
+          message: 'A known error occurred',
+        },
+      })
+    })
+
+    it('should handle an unknown error', async () => {
+      fetchMock.mockReject(new Error('An unknown error occurred'))
+
+      const Client = new RyskSDK(privateKey)
+
+      const result = await Client.getAccountHealth()
+
+      expect(result).toEqual({
+        accountHealth: {},
+        error: { message: 'An unknown error occurred. Try enabling debug mode for mode detail.' },
       })
     })
   })

@@ -51,6 +51,23 @@ interface BaseApiResponse {
   success: boolean
 }
 
+interface AccountHealth extends BaseApiResponse {
+  value: {
+    equity: bigint
+    initialAccountMarginRatio: bigint
+    maintenanceAccountMarginRatio: bigint
+    initialHealth: bigint
+    maintenanceHealth: bigint
+    leverage: bigint
+    totalPnl: bigint
+    initialMarginUsed: bigint
+    maintenanceMarginUsed: bigint
+    initialMarginAvailable: bigint
+    maintenanceMarginAvailable: bigint
+    pendingWithdrawal: bigint
+  }
+}
+
 interface Balance {
   asset: HexString
   quantity: bigint
@@ -202,6 +219,10 @@ interface ErrorReturnType {
   }
 }
 
+interface AccountHealthReturnType extends ErrorReturnType {
+  accountHealth: AccountHealth['value'] | {}
+}
+
 interface BalancesReturnType extends ErrorReturnType {
   balances: {
     address: HexString
@@ -273,6 +294,8 @@ interface WithdrawReturnType extends ErrorReturnType {
 export {
   OrderType,
   TimeInForce,
+  type AccountHealth,
+  type AccountHealthReturnType,
   type Balance,
   type BalancesReturnType,
   type BaseApiResponse,

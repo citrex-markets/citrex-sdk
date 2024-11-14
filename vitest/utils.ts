@@ -347,3 +347,18 @@ export const mockTradeHistory = {
     },
   ],
 }
+
+export const mockAccountHealth = {
+  equity: '521853167994700001958',
+  initialAccountMarginRatio: '29850665588517496',
+  maintenanceAccountMarginRatio: '14925332794258748',
+  initialHealth: '506275503590581770462',
+  maintenanceHealth: '514064335792640886211',
+  leverage: '20000000000000000000',
+  totalPnl: '41880167994700001958',
+  initialMarginUsed: '15577664404118231496',
+  maintenanceMarginUsed: '7788832202059115748',
+  initialMarginAvailable: '506275503590581770462',
+  maintenanceMarginAvailable: '514064335792640886210',
+  pendingWithdrawal: '40000000000000000000',
+}

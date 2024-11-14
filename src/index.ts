@@ -1,5 +1,7 @@
 import type { MarginAssetKey } from './constants/marginAssets'
 import type {
+  AccountHealth,
+  AccountHealthReturnType,
   Balance,
   BalancesReturnType,
   BaseApiResponse,
@@ -883,6 +885,42 @@ class RyskSDK {
       return {
         error: { message: UNKNOWN_ERROR },
         success: false,
+      }
+    }
+  }
+
+  /**
+   * Get health metrics for the account.
+   *
+   * {@link https://rysk.readme.io/reference/get-account-health}
+   *
+   * @returns A promise that resolves to an object with either the account health or an error.
+   * @throws {Error} Thrown if an error occurs during the order process. The error object may contain details from the API response or a generic message.
+   */
+  public getAccountHealth = async (): Promise<AccountHealthReturnType> => {
+    try {
+      const params = new URLSearchParams({
+        account: this.account.address,
+        subAccountId: this.subAccountId.toString(),
+      })
+      const { error, value } = await this.#fetchFromAPI<AccountHealth>(
+        `account-health?${params.toString()}`,
+      )
+
+      if (error) {
+        this.#logger.error({ msg: error })
+        return {
+          accountHealth: {},
+          error: { message: error },
+        }
+      }
+
+      return { accountHealth: value }
+    } catch (error) {
+      this.#logger.debug({ err: error })
+      return {
+        accountHealth: {},
+        error: { message: UNKNOWN_ERROR },
       }
     }
   }

@@ -613,7 +613,7 @@ describe('The RyskSDK REST', () => {
   })
 
   describe('calculate margin requirement endpoint', () => {
-    it('should allow a user to successfully cancel an order', async () => {
+    it('should allow a user to successfully calculate margin', async () => {
       fetchMock.mockResponse(
         JSON.stringify({
           error: '',
@@ -632,7 +632,7 @@ describe('The RyskSDK REST', () => {
       expect(result).toEqual({ required: '17449331829095744143007' })
     })
 
-    it('should handle an error during the cancel process', async () => {
+    it('should handle an error during the calculation', async () => {
       fetchMock.mockResponse(JSON.stringify({ error: 'A known error occurred', success: false }))
 
       const Client = new RyskSDK(privateKey)

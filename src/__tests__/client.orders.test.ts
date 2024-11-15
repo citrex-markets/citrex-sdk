@@ -8,6 +8,7 @@ import { privateKey, address, marketFOKOrder, customOrder, replacementOrder } fr
 
 describe('The RyskSDK', () => {
   beforeEach(() => {
+    vi.useRealTimers()
     vi.restoreAllMocks()
     vi.useFakeTimers()
     vi.setSystemTime(1709829760000)
@@ -18,6 +19,8 @@ describe('The RyskSDK', () => {
       fetchMock.mockResponse(JSON.stringify(marketFOKOrder))
 
       const Client = new RyskSDK(privateKey)
+
+      await vi.advanceTimersByTimeAsync(10000)
 
       const result = await Client.placeOrder({
         isBuy: true,
@@ -34,8 +37,8 @@ describe('The RyskSDK', () => {
           message: {
             account: '0xb47B0b1e44B932Ae9Bb01817E7010A553A965Ea8',
             isBuy: true,
-            expiration: 1712421760000n,
-            nonce: 1709829760000000n,
+            expiration: 1712421770000n,
+            nonce: 1709829780000000n,
             orderType: 2,
             price: 3536200000000000000000n,
             productId: 1002,
@@ -52,7 +55,7 @@ describe('The RyskSDK', () => {
         [
           "https://api.staging.rysk.finance/v1/order",
           {
-            "body": "{"expiration":1712421760000,"nonce":1709829760000000,"price":"3536200000000000000000","quantity":"1000000000000000","signature":"0x9f0c4edaa7fc0290e1136ecfa48386a4f7e26150cddd9a8547791747bf83c7c71489fe28c3a0f07af76c00b757b178cb7cd7d5dd797298432f415f1c2c0fc0f41c","account":"0xb47B0b1e44B932Ae9Bb01817E7010A553A965Ea8","isBuy":true,"orderType":2,"productId":1002,"subAccountId":1,"timeInForce":1}",
+            "body": "{"expiration":1712421770000,"nonce":1709829780000000,"price":"3536200000000000000000","quantity":"1000000000000000","signature":"0xab9a2fc1f10e2d0e81f7a3831f35c2dce96008281774ad2a85c0dc02ecd47935024c20f9b9241495b46d9007c5520b12f15dd186fdaf846777a8dc287ac148f31b","account":"0xb47B0b1e44B932Ae9Bb01817E7010A553A965Ea8","isBuy":true,"orderType":2,"productId":1002,"subAccountId":1,"timeInForce":1}",
             "method": "POST",
           },
         ]

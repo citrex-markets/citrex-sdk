@@ -105,7 +105,7 @@ describe('The RyskSDK deposit function', () => {
   })
 
   it('should allow a user to deposit funds with sufficient existing approval', async () => {
-    mocks.createPublicClient.readContract.mockReturnValue(BigInt(100e18))
+    mocks.createPublicClient.readContract.mockReturnValue(BigInt(100e6))
     mocks.createPublicClient.simulateContract.mockReturnValue({ request: true })
     mocks.createWalletClient.writeContract.mockReturnValue('0x1234546')
     mocks.createPublicClient.getTransactionReceipt.mockReturnValue({ status: 'success' })
@@ -116,7 +116,8 @@ describe('The RyskSDK deposit function', () => {
 
     await vi.runOnlyPendingTimersAsync()
 
-    expect(mocks.createPublicClient.simulateContract).toHaveBeenCalledWith(
+    expect(mocks.createPublicClient.simulateContract).toHaveBeenNthCalledWith(
+      1,
       expect.objectContaining({
         address: ciaoAddress,
         args: [address, 1, 100000000n, USDC],
@@ -128,7 +129,7 @@ describe('The RyskSDK deposit function', () => {
   })
 
   it('should surface errors to the user when they are of a known type', async () => {
-    mocks.createPublicClient.readContract.mockReturnValue(BigInt(1000e18))
+    mocks.createPublicClient.readContract.mockReturnValue(BigInt(1000e6))
     mocks.createPublicClient.simulateContract.mockRejectedValue(
       new BaseError('This is the short message.', {
         cause: new ContractFunctionRevertedError({
@@ -156,7 +157,7 @@ describe('The RyskSDK deposit function', () => {
   })
 
   it('should surface errors to the user when they are unknown', async () => {
-    mocks.createPublicClient.readContract.mockReturnValue(BigInt(1000e18))
+    mocks.createPublicClient.readContract.mockReturnValue(BigInt(1000e6))
     mocks.createPublicClient.simulateContract.mockRejectedValue(
       new Error('An unknown error occurred.'),
     )
@@ -175,7 +176,7 @@ describe('The RyskSDK deposit function', () => {
   })
 
   it('should recursively check for transaction receipts if there is an error', async () => {
-    mocks.createPublicClient.readContract.mockReturnValue(BigInt(1000e18))
+    mocks.createPublicClient.readContract.mockReturnValue(BigInt(1000e6))
     mocks.createPublicClient.simulateContract.mockReturnValue({ request: true })
     mocks.createWalletClient.writeContract.mockReturnValue('0x1234546')
     mocks.createPublicClient.getTransactionReceipt.mockRejectedValue('error')

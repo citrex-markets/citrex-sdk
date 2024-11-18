@@ -1,0 +1,49 @@
+name: Build
+
+on:
+  pull_request:
+    branches: [master]
+
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
+jobs:
+  build:
+    name: Build
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      matrix:
+        version:
+          - 18.0.0
+          - 20.0.0
+          - 22.0.0
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          cache: 'yarn'
+          node-version: ${{ matrix.version }}
+
+      - name: Clean package.json
+        run: |
+          echo "$(jq 'del(.devDependencies)' package.json)" > package.json
+        shell: bash
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile --ignore-scripts
+
+      - name: Install build tools
+        run: yarn add tsup typescript -D --frozen-lockfile --ignore-scripts
+
+      - name: Build package
+        run: yarn build

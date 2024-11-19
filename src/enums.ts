@@ -34,6 +34,7 @@ enum OrderType {
   LIMIT = 0,
   LIMIT_MAKER = 1,
   MARKET = 2,
+  LIMIT_REDUCE_ONLY = 7,
 }
 
 enum TimeInForce {

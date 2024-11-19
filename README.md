@@ -104,7 +104,7 @@ A series of useful enums can be imported from `rysk-sdk/enums` and used to help 
 | Interval     | `'1M' \| '5M' \| '15M' \| '30M' \| '1H' \| '2H' \| '4H' \| '8H' \| '1D' \| '3D' \| '1W'` | The interval to use when fetching K-line data.       |
 | MarginAssets | `USDC`                                                                                   | Symbol values of supported margin assets.            |
 | OrderStatus  | `CANCELLED \| EXPIRED \| FILLED \| OPEN \| PENDING \| REJECTED`                          | Defines the possible states an order can be in.      |
-| OrderType    | `LIMIT \| LIMIT_MAKER \| MARKET`                                                         | Order types for building order payloads.             |
+| OrderType    | `LIMIT \| LIMIT_MAKER \| LIMIT_REDUCE_ONLY \| MARKET`                                    | Order types for building order payloads.             |
 | TimeInForce  | `GTC \| FOK \| IOC`                                                                      | Time in force values for building order payloads.    |
 
 ### Further support

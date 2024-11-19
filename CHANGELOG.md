@@ -11,7 +11,8 @@
 - Now stubbing env vars in unit tests.
 - Mutation testing now at 100% coverage.
 
-## 1.2.0
+## 1.1.1
 
 - New workflow to confirm builds are passing on supported Node.js versions.
-- Upgrade to Node.js 22.
+- Dependency updates.
+- Add LIMIT_REDUCE_ONLY order type.

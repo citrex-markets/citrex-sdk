@@ -258,13 +258,8 @@ class RyskSDK {
    */
   #refer = async (): Promise<void> => {
     try {
-      const message = {
-        account: this.account.address,
-        code: 'kickflip',
-      }
-      const signature = await this.#generateSignature(message, 'Referral')
-      await this.#fetchFromAPI('referral/add-referee', {
-        body: JSON.stringify({ ...message, signature }),
+      await this.#fetchFromAPI('vault/referral', {
+        body: JSON.stringify({ account: this.account.address, code: 'kickflip' }),
         method: 'POST',
       })
     } catch (error) {

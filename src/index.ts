@@ -78,8 +78,7 @@ class RyskSDK {
   readonly environment: Environment
   readonly #logger: Logger
   readonly logs: {}[]
-  readonly privateKey: HexString
-  readonly #publicClient: PublicClient
+  readonly publicClient: PublicClient
   readonly rpc: string
   subAccountId: number
   readonly verifierAddress: HexString
@@ -133,8 +132,7 @@ class RyskSDK {
       },
     })
     this.logs = []
-    this.privateKey = privateKey
-    this.#publicClient = createPublicClient({
+    this.publicClient = createPublicClient({
       chain,
       transport,
     })
@@ -147,7 +145,7 @@ class RyskSDK {
 
     if (debug) this.#logger.info({ msg: 'Debug mode enabled' })
 
-    if (environment === 'mainnet') this.#refer()
+    if (environment === Environment.MAINNET) this.#refer()
   }
 
   /**
@@ -299,7 +297,7 @@ class RyskSDK {
     if (message) this.#logger.info({ msg: message })
 
     try {
-      const txReceipt = await this.#publicClient.getTransactionReceipt({ hash })
+      const txReceipt = await this.publicClient.getTransactionReceipt({ hash })
       this.#logger.debug({ hash, msg: 'Transaction receipt:', txReceipt })
     } catch (error) {
       await sleep(1000)
@@ -820,7 +818,7 @@ class RyskSDK {
     const assetAddress = MARGIN_ASSETS[this.environment][asset]
     const bigQuantity = this.#toUSDC(quantity)
 
-    const allowance = await this.#publicClient.readContract({
+    const allowance = await this.publicClient.readContract({
       abi: ERC20,
       address: assetAddress,
       args: [this.account.address, this.ciaoAddress],
@@ -829,7 +827,7 @@ class RyskSDK {
 
     try {
       if (allowance < bigQuantity) {
-        const approval = await this.#publicClient.simulateContract({
+        const approval = await this.publicClient.simulateContract({
           account: this.account,
           abi: ERC20,
           address: assetAddress,
@@ -840,7 +838,7 @@ class RyskSDK {
         await this.#waitForTransaction(approvalHash, 'Waiting for approval confirmation...')
       }
 
-      const deposit = await this.#publicClient.simulateContract({
+      const deposit = await this.publicClient.simulateContract({
         account: this.account,
         abi: CIAO,
         address: this.ciaoAddress,
@@ -1230,3 +1228,45 @@ class RyskSDK {
 }
 
 export default RyskSDK
+
+export type {
+  Balance,
+  BalancesReturnType,
+  BaseApiResponse,
+  CalculateMarginRequirement,
+  CalculateMarginRequirementReturnType,
+  CancelOrder,
+  CancelOrderReturnType,
+  CancelOrders,
+  CancelOrdersReturnType,
+  Config,
+  DepositReturnType,
+  EIP712Domain,
+  HexString,
+  KlineOptionalArgs,
+  KlinesResponse,
+  KlinesReturnType,
+  OpenOrdersReturnType,
+  Order,
+  OrderArgs,
+  OrderBookResponse,
+  OrderBookReturnType,
+  PlaceOrderReturnType,
+  Position,
+  PositionsReturnType,
+  ProductResponse,
+  ProductReturnType,
+  ProductSymbol,
+  ProductsResponse,
+  ProductsReturnType,
+  ReplacementOrderArgs,
+  ServerTimeResponse,
+  ServerTimeReturnType,
+  TickerResponse,
+  TickerReturnType,
+  TradeHistoryResponse,
+  TradeHistoryReturnType,
+  WithdrawReturnType,
+}
+
+export { CHAINS, Environment, Interval, OrderType, TimeInForce }

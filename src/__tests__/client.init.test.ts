@@ -4,6 +4,19 @@ import RyskSDK from 'src'
 import { Environment } from 'src/enums'
 import { privateKey } from 'vitest/utils'
 
+const mocks = vi.hoisted(() => ({
+  createPublicClient: vi.fn().mockReturnValue({}),
+}))
+
+vi.mock('viem', async () => {
+  const actual = (await vi.importActual('viem')) as any
+
+  return {
+    ...actual,
+    createPublicClient: mocks.createPublicClient,
+  }
+})
+
 describe('The RyskSDK', () => {
   beforeEach(() => {
     fetchMock.resetMocks()
@@ -11,7 +24,7 @@ describe('The RyskSDK', () => {
 
   it('should initialise correctly with only required params', () => {
     const Client = new RyskSDK(privateKey)
-    Client.publicClient.uid = 'test-uid'
+
     expect(Client).toMatchSnapshot()
   })
 
@@ -22,7 +35,7 @@ describe('The RyskSDK', () => {
       rpc: 'https://test-rpc.quiknode.pro',
       subAccountId: 2,
     })
-    Client.publicClient.uid = 'test-uid'
+
     expect(Client).toMatchSnapshot()
   })
 

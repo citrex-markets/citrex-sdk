@@ -11,7 +11,7 @@ describe('The RyskSDK', () => {
 
   it('should initialise correctly with only required params', () => {
     const Client = new RyskSDK(privateKey)
-
+    Client.publicClient.uid = 'test-uid'
     expect(Client).toMatchSnapshot()
   })
 
@@ -22,7 +22,7 @@ describe('The RyskSDK', () => {
       rpc: 'https://test-rpc.quiknode.pro',
       subAccountId: 2,
     })
-
+    Client.publicClient.uid = 'test-uid'
     expect(Client).toMatchSnapshot()
   })
 

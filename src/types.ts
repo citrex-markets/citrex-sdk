@@ -1,7 +1,7 @@
-import type { MarginAssetKey } from 'src/constants/marginAssets'
 import type {
   Environment as EnvironmentEnum,
   Interval,
+  MarginAssets,
   OrderStatus,
   OrderType,
   TimeInForce,
@@ -25,6 +25,8 @@ interface EIP712Domain {
 type Environment = EnvironmentEnum
 
 type HexString = `0x${string}`
+
+type MarginAssetKey = keyof typeof MarginAssets
 
 type ProductSymbol = `${string}perp`
 
@@ -313,6 +315,7 @@ export {
   type KlineOptionalArgs,
   type KlinesResponse,
   type KlinesReturnType,
+  type MarginAssetKey,
   type OpenOrdersReturnType,
   type Order,
   type OrderArgs,

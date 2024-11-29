@@ -45,6 +45,9 @@
       "types": "./lib/enums.d.ts",
       "import": "./lib/enums.js"
     },
+    "./types": {
+      "types": "./lib/types.d.ts"
+    },
     "./package.json": "./package.json"
   },
   "main": "./lib/index.js",

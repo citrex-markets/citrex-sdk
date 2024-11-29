@@ -1,6 +1,5 @@
 import type { Logger } from 'pino'
 import type { Chain, PrivateKeyAccount, PublicClient, WalletClient } from 'viem'
-import type { MarginAssetKey } from './constants/marginAssets'
 import type {
   AccountHealth,
   AccountHealthReturnType,
@@ -20,6 +19,7 @@ import type {
   KlineOptionalArgs,
   KlinesResponse,
   KlinesReturnType,
+  MarginAssetKey,
   OpenOrdersReturnType,
   Order,
   OrderArgs,

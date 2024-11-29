@@ -107,6 +107,10 @@ A series of useful enums can be imported from `rysk-sdk/enums` and used to help 
 | OrderType    | `LIMIT \| LIMIT_MAKER \| LIMIT_REDUCE_ONLY \| MARKET`                                    | Order types for building order payloads.             |
 | TimeInForce  | `GTC \| FOK \| IOC`                                                                      | Time in force values for building order payloads.    |
 
+### Importing types
+
+If you are developing using TypeScript, or you require access to the typings used in the SDK, they can be imported from `rysk-sdk/types`.
+
 ### Further support
 
 For more information on specific endpoints, please refer to the official [Rysk API docs](https://rysk.readme.io/reference/rysk-api-introduction). Each function in this client contains detailed JSDocs on arguments and return types to aid the developer experience and links to their respective endpoints within the official docs.

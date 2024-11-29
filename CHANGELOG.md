@@ -10,3 +10,9 @@
 - README updates.
 - Now stubbing env vars in unit tests.
 - Mutation testing now at 100% coverage.
+
+## 1.1.1
+
+- New workflow to confirm builds are passing on supported Node.js versions.
+- Dependency updates.
+- Add LIMIT_REDUCE_ONLY order type.

@@ -1,3 +1,5 @@
+import type { Logger } from 'pino'
+import type { PrivateKeyAccount, PublicClient, WalletClient } from 'viem'
 import type { MarginAssetKey } from './constants/marginAssets'
 import type {
   AccountHealth,
@@ -40,8 +42,6 @@ import type {
   TradeHistoryReturnType,
   WithdrawReturnType,
 } from './types'
-import type { Logger } from 'pino'
-import type { PrivateKeyAccount, PublicClient, WalletClient } from 'viem'
 
 import logger, { levels } from 'pino'
 import {
@@ -258,13 +258,8 @@ class RyskSDK {
    */
   #refer = async (): Promise<void> => {
     try {
-      const message = {
-        account: this.account.address,
-        code: 'kickflip',
-      }
-      const signature = await this.#generateSignature(message, 'Referral')
-      await this.#fetchFromAPI('referral/add-referee', {
-        body: JSON.stringify({ ...message, signature }),
+      await this.#fetchFromAPI('vault/referral', {
+        body: JSON.stringify({ account: this.account.address, code: 'kickflip' }),
         method: 'POST',
       })
     } catch (error) {
@@ -1073,7 +1068,7 @@ class RyskSDK {
    * @param [orderArgs.expiration] (Optional) The expiration time of the order in milliseconds (default: now + 30 days).
    * @param orderArgs.isBuy Whether to buy (true) or sell (false).
    * @param [orderArgs.nonce] (Optional) A unique identifier for the order. (default: current unix timestamp in nano seconds).
-   * @param [orderArgs.orderType] (Optional) The type of order (default: market). Use the {@link OrderType} enum.
+   * @param [orderArgs.orderType] (Optional) The type of order (default: MARKET). Use the {@link OrderType} enum.
    * @param orderArgs.price The price of the order.
    * @param [orderArgs.priceIncrement] The price precision for the product. This is only required for MARKET orders.
    * This value can be found under the `increment` key when calling the `getProduct` method.

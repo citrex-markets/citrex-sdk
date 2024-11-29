@@ -35,11 +35,11 @@ describe('The RyskSDK', () => {
       if (!fetchMock.mock.calls.length) throw new Error('Awaiting call...')
     })
 
-    expect(fetchMock.mock.calls[0]).toMatchInlineSnapshot(`
+    expect(fetchMock.mock.lastCall).toMatchInlineSnapshot(`
       [
-        "https://api.rysk.finance/v1/referral/add-referee",
+        "https://api.rysk.finance/v1/vault/referral",
         {
-          "body": "{"account":"0xb47B0b1e44B932Ae9Bb01817E7010A553A965Ea8","code":"kickflip","signature":"0x67714f4bdbb30fc7c9471cfdb0112080762bb3eddb5d73be0dae0aad3ee4dd0a713ff5bce79b78f09d1eb1956fcf581e8c243bf74cbc2f19c9b2c4cf5303b3801c"}",
+          "body": "{"account":"0xb47B0b1e44B932Ae9Bb01817E7010A553A965Ea8","code":"kickflip"}",
           "method": "POST",
         },
       ]
@@ -52,9 +52,9 @@ describe('The RyskSDK', () => {
     const Client = new RyskSDK(privateKey, { debug: true, environment: Environment.MAINNET })
 
     await vi.waitFor(() => {
-      if (Client.logs.length !== 4) throw new Error('Awaiting call...')
+      if (Client.logs.length !== 3) throw new Error('Awaiting call...')
     })
 
-    expect(Client.logs[3]).toEqual({ msg: 'Call failed, ignoring.' })
+    expect(Client.logs[2]).toEqual({ msg: 'Call failed, ignoring.' })
   })
 })

@@ -1,8 +1,6 @@
-import type { Environment, HexString } from 'src/types'
+import type { Environment, HexString, MarginAssetKey } from 'src/types'
 
 import { MarginAssets } from 'src/enums'
-
-type MarginAssetKey = keyof typeof MarginAssets
 
 const MARGIN_ASSETS: Record<Environment, Record<MarginAssetKey, HexString>> = {
   mainnet: { [MarginAssets.USDC]: '0xaf88d065e77c8cc2239327c5edb3a432268e5831' },
@@ -10,4 +8,3 @@ const MARGIN_ASSETS: Record<Environment, Record<MarginAssetKey, HexString>> = {
 }
 
 export default MARGIN_ASSETS
-export { type MarginAssetKey }

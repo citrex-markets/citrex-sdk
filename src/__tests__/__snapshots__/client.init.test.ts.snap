@@ -14,12 +14,45 @@ RyskSDK {
     "source": "privateKey",
     "type": "local",
   },
+  "apiUrl": "https://api.staging.rysk.finance/v1",
   "calculateMarginRequirement": [Function],
   "cancelAndReplaceOrder": [Function],
   "cancelOpenOrdersForProduct": [Function],
   "cancelOrder": [Function],
   "cancelOrders": [Function],
-  "chain": 421614,
+  "chain": {
+    "blockExplorers": {
+      "default": {
+        "apiUrl": "https://api-sepolia.arbiscan.io/api",
+        "name": "Arbiscan",
+        "url": "https://sepolia.arbiscan.io",
+      },
+    },
+    "contracts": {
+      "multicall3": {
+        "address": "0xca11bde05977b3631167028862be2a173976ca11",
+        "blockCreated": 81930,
+      },
+    },
+    "fees": undefined,
+    "formatters": undefined,
+    "id": 421614,
+    "name": "Arbitrum Sepolia",
+    "nativeCurrency": {
+      "decimals": 18,
+      "name": "Arbitrum Sepolia Ether",
+      "symbol": "ETH",
+    },
+    "rpcUrls": {
+      "default": {
+        "http": [
+          "https://sepolia-rollup.arbitrum.io/rpc",
+        ],
+      },
+    },
+    "serializers": undefined,
+    "testnet": true,
+  },
   "ciaoAddress": "0x71728FDDF90233cc35D61bec7858d7c42A310ACe",
   "deposit": [Function],
   "domain": {
@@ -45,9 +78,12 @@ RyskSDK {
       "msg": "Debug mode enabled",
     },
   ],
+  "marginAssets": {
+    "USDC": "0xb8be1401e65dc08bfb8f832fc1a27a16ca821b05",
+  },
   "placeOrder": [Function],
   "placeOrders": [Function],
-  "privateKey": "0xa608cd43cbc3d59bc51443f475b96a4654e956d6cc91783598a8e76a34000174",
+  "publicClient": {},
   "rpc": "https://test-rpc.quiknode.pro",
   "subAccountId": 2,
   "verifierAddress": "0x27809a3Bd3cf44d855f1BE668bFD16D34bcE157C",
@@ -69,12 +105,45 @@ RyskSDK {
     "source": "privateKey",
     "type": "local",
   },
+  "apiUrl": "https://api.staging.rysk.finance/v1",
   "calculateMarginRequirement": [Function],
   "cancelAndReplaceOrder": [Function],
   "cancelOpenOrdersForProduct": [Function],
   "cancelOrder": [Function],
   "cancelOrders": [Function],
-  "chain": 421614,
+  "chain": {
+    "blockExplorers": {
+      "default": {
+        "apiUrl": "https://api-sepolia.arbiscan.io/api",
+        "name": "Arbiscan",
+        "url": "https://sepolia.arbiscan.io",
+      },
+    },
+    "contracts": {
+      "multicall3": {
+        "address": "0xca11bde05977b3631167028862be2a173976ca11",
+        "blockCreated": 81930,
+      },
+    },
+    "fees": undefined,
+    "formatters": undefined,
+    "id": 421614,
+    "name": "Arbitrum Sepolia",
+    "nativeCurrency": {
+      "decimals": 18,
+      "name": "Arbitrum Sepolia Ether",
+      "symbol": "ETH",
+    },
+    "rpcUrls": {
+      "default": {
+        "http": [
+          "https://sepolia-rollup.arbitrum.io/rpc",
+        ],
+      },
+    },
+    "serializers": undefined,
+    "testnet": true,
+  },
   "ciaoAddress": "0x71728FDDF90233cc35D61bec7858d7c42A310ACe",
   "deposit": [Function],
   "domain": {
@@ -96,9 +165,12 @@ RyskSDK {
   "listOpenOrders": [Function],
   "listPositions": [Function],
   "logs": [],
+  "marginAssets": {
+    "USDC": "0xb8be1401e65dc08bfb8f832fc1a27a16ca821b05",
+  },
   "placeOrder": [Function],
   "placeOrders": [Function],
-  "privateKey": "0xa608cd43cbc3d59bc51443f475b96a4654e956d6cc91783598a8e76a34000174",
+  "publicClient": {},
   "rpc": "https://sepolia-rollup.arbitrum.io/rpc",
   "subAccountId": 1,
   "verifierAddress": "0x27809a3Bd3cf44d855f1BE668bFD16D34bcE157C",

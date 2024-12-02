@@ -2,7 +2,7 @@ import { defineConfig } from 'tsup'
 
 export default defineConfig({
   clean: true,
-  entry: ['src/index.ts', 'src/enums.ts'],
+  entry: ['src/index.ts', 'src/enums.ts', 'src/types.ts'],
   format: 'esm',
   minify: false,
   platform: 'node',

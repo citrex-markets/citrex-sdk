@@ -4,6 +4,19 @@ import RyskSDK from 'src'
 import { Environment } from 'src/enums'
 import { privateKey } from 'vitest/utils'
 
+const mocks = vi.hoisted(() => ({
+  createPublicClient: vi.fn().mockReturnValue({}),
+}))
+
+vi.mock('viem', async () => {
+  const actual = (await vi.importActual('viem')) as any
+
+  return {
+    ...actual,
+    createPublicClient: mocks.createPublicClient,
+  }
+})
+
 describe('The RyskSDK', () => {
   beforeEach(() => {
     fetchMock.resetMocks()

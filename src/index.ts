@@ -1,6 +1,5 @@
 import type { Logger } from 'pino'
-import type { PrivateKeyAccount, PublicClient, WalletClient } from 'viem'
-import type { MarginAssetKey } from './constants/marginAssets'
+import type { Chain, PrivateKeyAccount, PublicClient, WalletClient } from 'viem'
 import type {
   AccountHealth,
   AccountHealthReturnType,
@@ -20,6 +19,7 @@ import type {
   KlineOptionalArgs,
   KlinesResponse,
   KlinesReturnType,
+  MarginAssetKey,
   OpenOrdersReturnType,
   Order,
   OrderArgs,
@@ -72,14 +72,15 @@ import toRounded from './utils/toRounded'
 
 class RyskSDK {
   readonly account: PrivateKeyAccount
-  readonly chain: number
+  readonly apiUrl: string
+  readonly chain: Chain
   readonly ciaoAddress: HexString
   readonly domain: EIP712Domain
   readonly environment: Environment
   readonly #logger: Logger
   readonly logs: {}[]
-  readonly privateKey: HexString
-  readonly #publicClient: PublicClient
+  readonly marginAssets: Record<MarginAssetKey, HexString>
+  readonly publicClient: PublicClient
   readonly rpc: string
   subAccountId: number
   readonly verifierAddress: HexString
@@ -110,7 +111,8 @@ class RyskSDK {
     const verifyingContract = VERIFIER_ADDRESS[environment]
 
     this.account = account
-    this.chain = chain.id
+    this.apiUrl = API_URL[environment]
+    this.chain = chain
     this.ciaoAddress = CIAO_ADDRESS[environment]
     this.domain = {
       name: 'rysk',
@@ -133,8 +135,8 @@ class RyskSDK {
       },
     })
     this.logs = []
-    this.privateKey = privateKey
-    this.#publicClient = createPublicClient({
+    this.marginAssets = MARGIN_ASSETS[environment]
+    this.publicClient = createPublicClient({
       chain,
       transport,
     })
@@ -147,7 +149,7 @@ class RyskSDK {
 
     if (debug) this.#logger.info({ msg: 'Debug mode enabled' })
 
-    if (environment === 'mainnet') this.#refer()
+    if (environment === Environment.MAINNET) this.#refer()
   }
 
   /**
@@ -186,7 +188,7 @@ class RyskSDK {
     path: string,
     config?: RequestInit,
   ): Promise<TypedResponse> => {
-    const url = `${API_URL[this.environment]}/${path}`
+    const url = `${this.apiUrl}/${path}`
     this.#logger.debug({
       ...config,
       body: config?.body ? JSON.parse(config.body as string) : undefined,
@@ -299,7 +301,7 @@ class RyskSDK {
     if (message) this.#logger.info({ msg: message })
 
     try {
-      const txReceipt = await this.#publicClient.getTransactionReceipt({ hash })
+      const txReceipt = await this.publicClient.getTransactionReceipt({ hash })
       this.#logger.debug({ hash, msg: 'Transaction receipt:', txReceipt })
     } catch (error) {
       await sleep(1000)
@@ -817,10 +819,10 @@ class RyskSDK {
   ): Promise<DepositReturnType> => {
     this.#logger.info({ msg: `Depositing ${quantity} ${asset}...` })
 
-    const assetAddress = MARGIN_ASSETS[this.environment][asset]
+    const assetAddress = this.marginAssets[asset]
     const bigQuantity = this.#toUSDC(quantity)
 
-    const allowance = await this.#publicClient.readContract({
+    const allowance = await this.publicClient.readContract({
       abi: ERC20,
       address: assetAddress,
       args: [this.account.address, this.ciaoAddress],
@@ -829,7 +831,7 @@ class RyskSDK {
 
     try {
       if (allowance < bigQuantity) {
-        const approval = await this.#publicClient.simulateContract({
+        const approval = await this.publicClient.simulateContract({
           account: this.account,
           abi: ERC20,
           address: assetAddress,
@@ -840,7 +842,7 @@ class RyskSDK {
         await this.#waitForTransaction(approvalHash, 'Waiting for approval confirmation...')
       }
 
-      const deposit = await this.#publicClient.simulateContract({
+      const deposit = await this.publicClient.simulateContract({
         account: this.account,
         abi: CIAO,
         address: this.ciaoAddress,
@@ -934,7 +936,7 @@ class RyskSDK {
     try {
       const signature = await this.#generateSignedAuthentication()
 
-      const addressToKeyMap = Object.entries(MARGIN_ASSETS[this.environment]).reduce(
+      const addressToKeyMap = Object.entries(this.marginAssets).reduce(
         (map, [key, address]) => ({
           ...map,
           [address]: key,
@@ -1187,7 +1189,7 @@ class RyskSDK {
 
     const sharedParams = {
       account: this.account.address,
-      asset: MARGIN_ASSETS[this.environment][asset],
+      asset: this.marginAssets[asset],
       subAccountId: this.subAccountId,
     }
     const message = {

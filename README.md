@@ -2,7 +2,7 @@
   <img alt="Citrex Logo" src="img/citrex_yellow_banner.png"/>
 </p>
 
-Interact with the [Citrex Perpetual Exchange](https://app.citrex.markets/) and trade BTC, ETH, SEI and other cryptocurrency perp futures with leverage. Live on [Sei](https://sei.io/).
+Interact with the [Citrex Perpetual Exchange](https://app.citrex.markets/) and trade BTC, ETH, SEI, DOGE and other cryptocurrency perp futures with leverage. Live on [Sei](https://sei.io/).
 
 ```bash
 npm install citrex-sdk

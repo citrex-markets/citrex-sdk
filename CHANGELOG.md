@@ -22,3 +22,7 @@
 - Now exposing the public client that is created when the SDK is initialised.
 - Now exporting typings in their own import @ `citrex-sdk/types`.
 - Constants are now exposed via the client. This includes the API URL, Chain and available margin assets.
+
+## 1.2.1
+
+- Update to Citrex v2

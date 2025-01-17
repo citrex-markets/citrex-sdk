@@ -1,6 +1,6 @@
-# Contributing to the Rysk SDK
+# Contributing to the Citrex SDK
 
-Thank you for your interest in contributing to the Rysk SDK. This document outlines the guidelines for contributing code and documentation to this project. Here are guidelines to assist you as you prepare your contribution.
+Thank you for your interest in contributing to the Citrex SDK. This document outlines the guidelines for contributing code and documentation to this project. Here are guidelines to assist you as you prepare your contribution.
 
 ## Setting up the project
 
@@ -12,7 +12,7 @@ The following steps will help you to get up and running locally so you can begin
 
 ## Development
 
-We're all about the developer experience at Rysk, so this project has been setup with simple tooling and systems so you can start building as quick as possible.
+We're all about the developer experience at Citrex, so this project has been setup with simple tooling and systems so you can start building as quick as possible.
 
 ## Tooling
 

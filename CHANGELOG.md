@@ -1,4 +1,4 @@
-# Rysk SDK
+# Citrex SDK
 
 ## 1.0.0
 
@@ -20,5 +20,5 @@
 ## 1.2.0
 
 - Now exposing the public client that is created when the SDK is initialised.
-- Now exporting typings in their own import @ `rysk-sdk/types`.
+- Now exporting typings in their own import @ `citrex-sdk/types`.
 - Constants are now exposed via the client. This includes the API URL, Chain and available margin assets.

@@ -2,7 +2,7 @@ import { BaseError, ContractFunctionRevertedError, http } from 'viem'
 import { privateKeyToAccount } from 'viem/accounts'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 
-import RyskSDK from 'src'
+import CitrexSDK from 'src'
 import CIAO from 'src/ABI/CIAO'
 import CHAINS from 'src/constants/chains'
 import { USDC, address, ciaoAddress, privateKey } from 'vitest/utils'
@@ -41,7 +41,7 @@ vi.mock('viem', async () => {
   }
 })
 
-describe('The RyskSDK deposit function', () => {
+describe('The CitrexSDK deposit function', () => {
   beforeEach(() => {
     vi.restoreAllMocks()
     vi.useFakeTimers({ shouldAdvanceTime: true })
@@ -53,7 +53,7 @@ describe('The RyskSDK deposit function', () => {
     mocks.createWalletClient.writeContract.mockReturnValue('0x1234546')
     mocks.createPublicClient.getTransactionReceipt.mockReturnValue({ status: 'success' })
 
-    const Client = new RyskSDK(privateKey)
+    const Client = new CitrexSDK(privateKey)
 
     const result = await Client.deposit(100)
 
@@ -110,7 +110,7 @@ describe('The RyskSDK deposit function', () => {
     mocks.createWalletClient.writeContract.mockReturnValue('0x1234546')
     mocks.createPublicClient.getTransactionReceipt.mockReturnValue({ status: 'success' })
 
-    const Client = new RyskSDK(privateKey)
+    const Client = new CitrexSDK(privateKey)
 
     const result = await Client.deposit(100)
 
@@ -140,7 +140,7 @@ describe('The RyskSDK deposit function', () => {
       }),
     )
 
-    const Client = new RyskSDK(privateKey)
+    const Client = new CitrexSDK(privateKey)
 
     const result = await Client.deposit(100)
 
@@ -162,7 +162,7 @@ describe('The RyskSDK deposit function', () => {
       new Error('An unknown error occurred.'),
     )
 
-    const Client = new RyskSDK(privateKey)
+    const Client = new CitrexSDK(privateKey)
 
     const result = await Client.deposit(100)
 
@@ -181,7 +181,7 @@ describe('The RyskSDK deposit function', () => {
     mocks.createWalletClient.writeContract.mockReturnValue('0x1234546')
     mocks.createPublicClient.getTransactionReceipt.mockRejectedValue('error')
 
-    const Client = new RyskSDK(privateKey)
+    const Client = new CitrexSDK(privateKey)
 
     Client.deposit(100)
 

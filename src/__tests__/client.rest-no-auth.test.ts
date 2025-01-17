@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 
-import RyskSDK from 'src'
+import CitrexSDK from 'src'
 import { Interval } from 'src/enums'
 import {
   klines,
@@ -11,7 +11,7 @@ import {
   mockTradeHistory,
 } from 'vitest/utils'
 
-describe('The RyskSDK REST', () => {
+describe('The CitrexSDK REST', () => {
   beforeEach(() => {
     fetchMock.resetMocks()
     vi.useFakeTimers()
@@ -22,7 +22,7 @@ describe('The RyskSDK REST', () => {
     it('should allow a user to get a list of products', async () => {
       fetchMock.mockResponse(JSON.stringify(productsData))
 
-      const Client = new RyskSDK(privateKey)
+      const Client = new CitrexSDK(privateKey)
 
       const result = await Client.getProducts()
 
@@ -80,7 +80,7 @@ describe('The RyskSDK REST', () => {
     it('should handle an unknown error getting products', async () => {
       fetchMock.mockReject(new Error('An unknown error occurred'))
 
-      const Client = new RyskSDK(privateKey)
+      const Client = new CitrexSDK(privateKey)
 
       const result = await Client.getProducts()
 
@@ -93,7 +93,7 @@ describe('The RyskSDK REST', () => {
     it('should allow a user to get a specific product by its id', async () => {
       fetchMock.mockResponse(JSON.stringify(productsData[0]))
 
-      const Client = new RyskSDK(privateKey)
+      const Client = new CitrexSDK(privateKey)
 
       const result = await Client.getProduct(1003)
 
@@ -130,7 +130,7 @@ describe('The RyskSDK REST', () => {
     it('should allow a user to get a specific product by its symbol', async () => {
       fetchMock.mockResponse(JSON.stringify(productsData[1]))
 
-      const Client = new RyskSDK(privateKey)
+      const Client = new CitrexSDK(privateKey)
 
       const result = await Client.getProduct('ethperp')
 
@@ -165,7 +165,7 @@ describe('The RyskSDK REST', () => {
     it('should handle an unknown error', async () => {
       fetchMock.mockReject(new Error('An unknown error occurred'))
 
-      const Client = new RyskSDK(privateKey)
+      const Client = new CitrexSDK(privateKey)
 
       const result = await Client.getProduct(1003)
 
@@ -180,7 +180,7 @@ describe('The RyskSDK REST', () => {
     it('should allow a user to get the server time', async () => {
       fetchMock.mockResponse(JSON.stringify({ serverTime: 1709829760000 }))
 
-      const Client = new RyskSDK(privateKey)
+      const Client = new CitrexSDK(privateKey)
 
       const result = await Client.getServerTime()
 
@@ -195,7 +195,7 @@ describe('The RyskSDK REST', () => {
     it('should handle an unknown error', async () => {
       fetchMock.mockReject(new Error('An unknown error occurred'))
 
-      const Client = new RyskSDK(privateKey)
+      const Client = new CitrexSDK(privateKey)
 
       const result = await Client.getServerTime()
 
@@ -209,7 +209,7 @@ describe('The RyskSDK REST', () => {
     it('should allow a user to get kline data with no optional args', async () => {
       fetchMock.mockResponse(JSON.stringify(klines))
 
-      const Client = new RyskSDK(privateKey)
+      const Client = new CitrexSDK(privateKey)
 
       const result = await Client.getKlines('ethperp')
 
@@ -285,7 +285,7 @@ describe('The RyskSDK REST', () => {
     it('should allow a user to get kline data with optional args passed', async () => {
       fetchMock.mockResponse(JSON.stringify(klines))
 
-      const Client = new RyskSDK(privateKey)
+      const Client = new CitrexSDK(privateKey)
 
       await Client.getKlines('ethperp', {
         endTime: Date.now(),
@@ -302,7 +302,7 @@ describe('The RyskSDK REST', () => {
     it('should allow the end and start time to be now', async () => {
       fetchMock.mockResponse(JSON.stringify(klines))
 
-      const Client = new RyskSDK(privateKey)
+      const Client = new CitrexSDK(privateKey)
 
       await Client.getKlines('ethperp', { endTime: Date.now(), startTime: Date.now() })
 
@@ -312,7 +312,7 @@ describe('The RyskSDK REST', () => {
     })
 
     it('should not allow a limit over 1000', async () => {
-      const Client = new RyskSDK(privateKey)
+      const Client = new CitrexSDK(privateKey)
 
       const result = await Client.getKlines('ethperp', { limit: 1001 })
 
@@ -323,7 +323,7 @@ describe('The RyskSDK REST', () => {
     })
 
     it('should not allow a limit of less than or equal to 0', async () => {
-      const Client = new RyskSDK(privateKey)
+      const Client = new CitrexSDK(privateKey)
 
       const result = await Client.getKlines('ethperp', { limit: 0 })
 
@@ -334,7 +334,7 @@ describe('The RyskSDK REST', () => {
     })
 
     it('should not allow the start time to be in the future', async () => {
-      const Client = new RyskSDK(privateKey)
+      const Client = new CitrexSDK(privateKey)
 
       const result = await Client.getKlines('ethperp', { startTime: Date.now() + 1 })
 
@@ -345,7 +345,7 @@ describe('The RyskSDK REST', () => {
     })
 
     it('should not allow the start time to exceed the end time', async () => {
-      const Client = new RyskSDK(privateKey)
+      const Client = new CitrexSDK(privateKey)
 
       const result = await Client.getKlines('ethperp', {
         endTime: Date.now(),
@@ -361,7 +361,7 @@ describe('The RyskSDK REST', () => {
     it('should handle an unknown error', async () => {
       fetchMock.mockReject(new Error('An unknown error occurred'))
 
-      const Client = new RyskSDK(privateKey)
+      const Client = new CitrexSDK(privateKey)
 
       const result = await Client.getKlines('ethperp')
 
@@ -376,7 +376,7 @@ describe('The RyskSDK REST', () => {
     it('should allow a user to get data for all tickers', async () => {
       fetchMock.mockResponse(JSON.stringify(tickers))
 
-      const Client = new RyskSDK(privateKey)
+      const Client = new CitrexSDK(privateKey)
 
       const result = await Client.getTickers()
 
@@ -422,7 +422,7 @@ describe('The RyskSDK REST', () => {
     it('should allow a user to get data for a specific product', async () => {
       fetchMock.mockResponse(JSON.stringify([tickers[0]]))
 
-      const Client = new RyskSDK(privateKey)
+      const Client = new CitrexSDK(privateKey)
 
       const result = await Client.getTickers('ethperp')
 
@@ -453,7 +453,7 @@ describe('The RyskSDK REST', () => {
     it('should handle an unknown error', async () => {
       fetchMock.mockReject(new Error('An unknown error occurred'))
 
-      const Client = new RyskSDK(privateKey)
+      const Client = new CitrexSDK(privateKey)
 
       const result = await Client.getTickers('ethperp')
 
@@ -468,7 +468,7 @@ describe('The RyskSDK REST', () => {
     it('should return the order book depth with just a symbol', async () => {
       fetchMock.mockResponse(JSON.stringify(ethOrderBook))
 
-      const Client = new RyskSDK(privateKey)
+      const Client = new CitrexSDK(privateKey)
 
       const result = await Client.getOrderBook('ethperp')
 
@@ -588,7 +588,7 @@ describe('The RyskSDK REST', () => {
     it('should return the order book depth with all optional args passed', async () => {
       fetchMock.mockResponse(JSON.stringify(ethOrderBook))
 
-      const Client = new RyskSDK(privateKey)
+      const Client = new CitrexSDK(privateKey)
 
       await Client.getOrderBook('ethperp', 20, 18)
 
@@ -600,7 +600,7 @@ describe('The RyskSDK REST', () => {
     it('should handle an unknown error', async () => {
       fetchMock.mockReject(new Error('An unknown error occurred'))
 
-      const Client = new RyskSDK(privateKey)
+      const Client = new CitrexSDK(privateKey)
 
       const result = await Client.getOrderBook('ethperp')
 
@@ -622,7 +622,7 @@ describe('The RyskSDK REST', () => {
         }),
       )
 
-      const Client = new RyskSDK(privateKey)
+      const Client = new CitrexSDK(privateKey)
 
       const result = await Client.calculateMarginRequirement(true, 3000, 1002, 10)
 
@@ -635,7 +635,7 @@ describe('The RyskSDK REST', () => {
     it('should handle an error during the calculation', async () => {
       fetchMock.mockResponse(JSON.stringify({ error: 'A known error occurred', success: false }))
 
-      const Client = new RyskSDK(privateKey)
+      const Client = new CitrexSDK(privateKey)
 
       const result = await Client.calculateMarginRequirement(true, 3000, 1002, 10)
 
@@ -650,7 +650,7 @@ describe('The RyskSDK REST', () => {
     it('should handle an unknown error', async () => {
       fetchMock.mockReject(new Error('An unknown error occurred'))
 
-      const Client = new RyskSDK(privateKey)
+      const Client = new CitrexSDK(privateKey)
 
       const result = await Client.calculateMarginRequirement(true, 3000, 1002, 10)
 
@@ -665,7 +665,7 @@ describe('The RyskSDK REST', () => {
     it('should return trade history with just a symbol', async () => {
       fetchMock.mockResponse(JSON.stringify(mockTradeHistory))
 
-      const Client = new RyskSDK(privateKey)
+      const Client = new CitrexSDK(privateKey)
 
       const result = await Client.getTradeHistory('ethperp')
 
@@ -728,7 +728,7 @@ describe('The RyskSDK REST', () => {
     it('should return trade history with optional args passed', async () => {
       fetchMock.mockResponse(JSON.stringify(mockTradeHistory))
 
-      const Client = new RyskSDK(privateKey)
+      const Client = new CitrexSDK(privateKey)
 
       await Client.getTradeHistory('ethperp', 1)
 
@@ -740,7 +740,7 @@ describe('The RyskSDK REST', () => {
     it('should return an empty array for trades if trades are null', async () => {
       fetchMock.mockResponse(JSON.stringify({ success: true, trades: null }))
 
-      const Client = new RyskSDK(privateKey)
+      const Client = new CitrexSDK(privateKey)
 
       const response = await Client.getTradeHistory('ethperp')
 
@@ -754,7 +754,7 @@ describe('The RyskSDK REST', () => {
     it('should handle a known error', async () => {
       fetchMock.mockResponse(JSON.stringify({ error: 'A known error occurred', success: false }))
 
-      const Client = new RyskSDK(privateKey)
+      const Client = new CitrexSDK(privateKey)
 
       const result = await Client.getTradeHistory('ethperp')
 
@@ -769,7 +769,7 @@ describe('The RyskSDK REST', () => {
     it('should handle an unknown error', async () => {
       fetchMock.mockReject(new Error('An unknown error occurred'))
 
-      const Client = new RyskSDK(privateKey)
+      const Client = new CitrexSDK(privateKey)
 
       const result = await Client.getTradeHistory('ethperp')
 

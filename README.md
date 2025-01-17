@@ -1,43 +1,39 @@
 <p align="center">
-  <img alt="Rysk Logo" src="https://app.rysk.finance/brand/rysk-finance-uncorrelated-returns-join-the-community-today.webp" />
+  <img alt="Citrex Logo" src="img/citrex_yellow_banner.png"/>
 </p>
 
-![Build](https://img.shields.io/github/actions/workflow/status/MeanBoyCousin/rysk-sdk/release.yml?style=flat-square&label=Build&color=%234177f6&link=https://github.com/MeanBoyCousin/rysk-sdk/actions/workflows/release.yml)
-![NPM Version](https://img.shields.io/npm/v/rysk-sdk?style=flat-square&label=NPM&color=%234177f6&link=https://www.npmjs.com/package/rysk-sdk)
-![Discord](https://img.shields.io/discord/912754653756796950?style=flat-square&logo=discord&logoColor=%23fff&label=Discord&color=%234177f6&link=https://discord.gg/Az8dEA8ARs)
-
-Interact with the [Rysk decentralized exchange](https://app.rysk.finance/) and trade BTC, ETH, SOL and other cryptocurrency perp futures with leverage. Live on [Arbitrum](https://arbitrum.io/).
+Interact with the [Citrex Perpetual Exchange](https://app.citrex.markets/) and trade BTC, ETH, SEI and other cryptocurrency perp futures with leverage. Live on [Sei](https://sei.io/).
 
 ```bash
-npm install rysk-sdk
+npm install citrex-sdk
 # or
-yarn add rysk-sdk
+yarn add citrex-sdk
 # or
-pnpm add rysk-sdk
+pnpm add citrex-sdk
 # or
-bun install rysk-sdk
+bun install citrex-sdk
 ```
 
 ## Usage
 
 Getting started is a simple case of creating a .env file, importing the Client and instantiating an instance.
 
-The .env file should contain the necessary contract addresses to interact with the DEX. An up-to-date copy of the relevant contract addresses can be found in the [Rysk API docs](https://rysk.readme.io/reference/contract-addresses).
+The .env file should contain the necessary contract addresses to interact with the DEX. An up-to-date copy of the relevant contract addresses can be found in the [Citrex API docs](https://citrex.readme.io/).
 
 ```sh
-CIAO_MAINNET_ADDRESS=<...>
-ORDER_DISPATCH_MAINNET_ADDRESS=<...>
+CIAO_MAINNET_ADDRESS=<0x7461cFe1A4766146cAFce60F6907Ea657550670d>
+ORDER_DISPATCH_MAINNET_ADDRESS=<0x7461cFe1A4766146cAFce60F6907Ea657550670d>
 
 CIAO_TESTNET_ADDRESS=<...>
 ORDER_DISPATCH_TESTNET_ADDRESS=<...>
 ```
 
 ```ts
-import RyskSDK from 'rysk-sdk'
+import CitrexSDK from 'citrex-sdk'
 
 const MY_PRIVATE_KEY = '0x...'
 
-const Client = new RyskSDK(MY_PRIVATE_KEY)
+const Client = new CitrexSDK(MY_PRIVATE_KEY)
 ```
 
 The client can also accept a configuration object as the second parameter.
@@ -46,34 +42,34 @@ The client can also accept a configuration object as the second parameter.
 |--------------|--------------------------|-----------------------------------|---------------------------------------------------------------------------|
 | debug        | `boolean`                | `false`                             | Used to enable debug mode when running the client for additional logging. |
 | environment  | `'testnet' \| 'mainnet'` | `'testnet'`                         | Specify the environment you wish to trade in.                             |
-| rpc          | `string`                 | `Arbitrum RPC based on environment` | Specify a custom RPC url to used.                                         |
+| rpc          | `string`                 | `Sei RPC based on environment` | Specify a custom RPC url to used.                                         |
 | subAccountId | `number`                 | `1`                                 | Specify a sub-account ID to use. This can be from 1-255.                  |
 
 ```ts
-import RyskSDK from 'rysk-sdk'
+import CitrexSDK from 'citrex-sdk'
 
 const CONFIG = {
   debug: false,
-  environment: 'testnet',
-  rpc: 'https://sepolia.arbiscan.io',
+  environment: 'mainnet',
+  rpc: 'https://evm-rpc.sei-apis.com',
   subAccountId: 1,
 }
 const MY_PRIVATE_KEY = '0x...'
 
-const Client = new RyskSDK(MY_PRIVATE_KEY)
+const Client = new CitrexSDK(MY_PRIVATE_KEY)
 ```
 
 ## Getting started
 
-To get started, you will need to deposit funds and make a trade. Let's look at how we can do that now. If you need testnet funds, please head to the [Rysk Discord server](https://discord.gg/Az8dEA8ARs) where we will happily help.
+To get started, you will need to deposit funds and make a trade. Let's look at how we can do that now.
 
 ```ts
-import RyskSDK from 'rysk-sdk'
-import { OrderType, TimeInForce } from 'rysk-sdk/enums'
+import CitrexSDK from 'citrex-sdk'
+import { OrderType, TimeInForce } from 'citrex-sdk/enums'
 
 const MY_PRIVATE_KEY = '0x...'
 
-const Client = new RyskSDK(MY_PRIVATE_KEY)
+const Client = new CitrexSDK(MY_PRIVATE_KEY)
 
 // Let's deposit 1000 USDC to get started. By default deposits are in USDC.
 const { error, success, transactionHash } = await Client.deposit(1000)
@@ -96,7 +92,7 @@ if (success) {
 
 ### Handy enums
 
-A series of useful enums can be imported from `rysk-sdk/enums` and used to help match against responses or compose payloads.
+A series of useful enums can be imported from `citrex-sdk/enums` and used to help match against responses or compose payloads.
 
 | Name         | Values                                                                                   | Description                                          |
 |--------------|------------------------------------------------------------------------------------------|------------------------------------------------------|
@@ -109,20 +105,16 @@ A series of useful enums can be imported from `rysk-sdk/enums` and used to help 
 
 ### Importing types
 
-If you are developing using TypeScript, or you require access to the typings used in the SDK, they can be imported from `rysk-sdk/types`.
+If you are developing using TypeScript, or you require access to the typings used in the SDK, they can be imported from `citrex-sdk/types`.
 
 ### Further support
 
-For more information on specific endpoints, please refer to the official [Rysk API docs](https://rysk.readme.io/reference/rysk-api-introduction). Each function in this client contains detailed JSDocs on arguments and return types to aid the developer experience and links to their respective endpoints within the official docs.
-
-## Contributing
-
-Want to contribute? Check out that [contributing guide](https://github.com/MeanBoyCousin/rysk-sdk/blob/master/CONTRIBUTING.md) to get started.
+For more information on specific endpoints, please refer to the official [Citrex API docs](https://citrex.readme.io/). Each function in this client contains detailed JSDocs on arguments and return types to aid the developer experience and links to their respective endpoints within the official docs.
 
 ## Support
 
-Trouble getting started? Feel free to join us on the official [Rysk Discord server](https://discord.gg/Az8dEA8ARs) where you can get full support from the team.
+Trouble getting started? Feel free to join us on the official [Twitter Account](https://x.com/citrex_markets/) where you can get full support from the team.
 
 ## License
 
-MIT License © 2024-Present [Tim Dunphy](https://github.com/MeanBoyCousin)
+MIT License © 2024-Present

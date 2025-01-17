@@ -36,7 +36,7 @@ describe('The HundredXClient withdraw function', () => {
     ).toEqual(address)
     expect(call).toMatchInlineSnapshot(`
       [
-        "https://api.staging.rysk.finance/v1/withdraw",
+        "https://api.staging.citrex.markets/v1/withdraw",
         {
           "body": "{"account":"0xb47B0b1e44B932Ae9Bb01817E7010A553A965Ea8","asset":"0xb8be1401e65dc08bfb8f832fc1a27a16ca821b05","subAccountId":1,"nonce":1709829760000000,"quantity":"100000000","signature":"0x101143e89f87141ea3ae19a1a9e97b1e940ab8e38ecde5886ac3a354746bf1e67a55495a8c172f78e07f49764e453f624b51bb7c808745618f5bfff4bcb652de1c"}",
           "method": "POST",

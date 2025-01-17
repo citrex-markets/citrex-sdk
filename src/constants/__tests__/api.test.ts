@@ -6,8 +6,8 @@ describe('The API_URL constant', () => {
   it('should stay unchanged', () => {
     expect(API_URL).toMatchInlineSnapshot(`
       {
-        "mainnet": "https://api.rysk.finance/v1",
-        "testnet": "https://api.staging.rysk.finance/v1",
+        "mainnet": "https://api.citrex.markets/v1",
+        "testnet": "https://api.staging.citrex.markets/v1",
       }
     `)
   })

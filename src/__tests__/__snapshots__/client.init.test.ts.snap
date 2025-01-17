@@ -1,7 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`The RyskSDK > should initialise correctly with all config parameters passed 1`] = `
-RyskSDK {
+exports[`The CitrexSDK > should initialise correctly with all config parameters passed 1`] = `
+CitrexSDK {
   "account": {
     "address": "0xb47B0b1e44B932Ae9Bb01817E7010A553A965Ea8",
     "experimental_signAuthorization": [Function],
@@ -14,7 +14,7 @@ RyskSDK {
     "source": "privateKey",
     "type": "local",
   },
-  "apiUrl": "https://api.staging.rysk.finance/v1",
+  "apiUrl": "https://api.staging.citrex.markets/v1",
   "calculateMarginRequirement": [Function],
   "cancelAndReplaceOrder": [Function],
   "cancelOpenOrdersForProduct": [Function],
@@ -57,7 +57,7 @@ RyskSDK {
   "deposit": [Function],
   "domain": {
     "chainId": 421614n,
-    "name": "rysk",
+    "name": "citrex",
     "verifyingContract": "0x27809a3Bd3cf44d855f1BE668bFD16D34bcE157C",
     "version": "0.0.0",
   },
@@ -91,8 +91,8 @@ RyskSDK {
 }
 `;
 
-exports[`The RyskSDK > should initialise correctly with only required params 1`] = `
-RyskSDK {
+exports[`The CitrexSDK > should initialise correctly with only required params 1`] = `
+CitrexSDK {
   "account": {
     "address": "0xb47B0b1e44B932Ae9Bb01817E7010A553A965Ea8",
     "experimental_signAuthorization": [Function],
@@ -105,7 +105,7 @@ RyskSDK {
     "source": "privateKey",
     "type": "local",
   },
-  "apiUrl": "https://api.staging.rysk.finance/v1",
+  "apiUrl": "https://api.staging.citrex.markets/v1",
   "calculateMarginRequirement": [Function],
   "cancelAndReplaceOrder": [Function],
   "cancelOpenOrdersForProduct": [Function],
@@ -148,7 +148,7 @@ RyskSDK {
   "deposit": [Function],
   "domain": {
     "chainId": 421614n,
-    "name": "rysk",
+    "name": "citrex",
     "verifyingContract": "0x27809a3Bd3cf44d855f1BE668bFD16D34bcE157C",
     "version": "0.0.0",
   },

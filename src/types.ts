@@ -16,7 +16,7 @@ interface Config {
 }
 
 interface EIP712Domain {
-  name: 'rysk'
+  name: 'citrex'
   version: '0.0.0'
   chainId: bigint
   verifyingContract: HexString

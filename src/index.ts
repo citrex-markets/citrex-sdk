@@ -70,7 +70,7 @@ import { Environment, Interval, MarginAssets, OrderType, TimeInForce } from './e
 import sleep from './utils/sleep'
 import toRounded from './utils/toRounded'
 
-class RyskSDK {
+class CitrexSDK {
   readonly account: PrivateKeyAccount
   readonly apiUrl: string
   readonly chain: Chain
@@ -87,9 +87,9 @@ class RyskSDK {
   readonly #walletClient: WalletClient
 
   /**
-   * Creates a new instance of the Rysk SDK.
+   * Creates a new instance of the Citrex SDK.
    *
-   * See {@link https://rysk.readme.io/} for detailed documentation.
+   * See {@link https://citrex.readme.io/} for detailed documentation.
    *
    * @param privateKey The private key used to sign transactions.
    * @param [config] (Optional) Configuration options.
@@ -115,7 +115,7 @@ class RyskSDK {
     this.chain = chain
     this.ciaoAddress = CIAO_ADDRESS[environment]
     this.domain = {
-      name: 'rysk',
+      name: 'citrex',
       version: '0.0.0',
       chainId: BigInt(chain.id),
       verifyingContract,
@@ -123,7 +123,7 @@ class RyskSDK {
     this.environment = environment
     this.#logger = logger({
       level: debug ? 'trace' : 'info',
-      name: 'rysk-sdk',
+      name: 'citrex-sdk',
       mixin: (messageObject, level) => {
         if (debug || level > levels.values.debug) this.logs.push(messageObject)
 
@@ -176,7 +176,7 @@ class RyskSDK {
   }
 
   /**
-   * Fetches data from the Rysk API asynchronously.
+   * Fetches data from the Citrex API asynchronously.
    *
    * @template TypedResponse The type expected for the parsed JSON response.
    * @param path The API endpoint path relative to the base API URL.
@@ -328,7 +328,7 @@ class RyskSDK {
   /**
    * Calculate the required margin for a new order.
    *
-   * {@link https://rysk.readme.io/reference/margin-calculator}
+   * {@link https://citrex.readme.io/reference/margin-calculator}
    *
    * @param isBuy Whether to buy (true) or sell (false).
    * @param price The price of the asset you intend to order.
@@ -375,7 +375,7 @@ class RyskSDK {
   /**
    * Get the current state of the order book for a product.
    *
-   * {@link https://rysk.readme.io/reference/book-depth}
+   * {@link https://citrex.readme.io/reference/book-depth}
    *
    * @param productSymbol The product symbol to get data for (btcperp, ethperp, etc.).
    * @param [limit] (Optional) The number of bids and asks to retrieve. Can be 5, 10 or 20 (default: 5).
@@ -407,7 +407,7 @@ class RyskSDK {
   /**
    * Get K-line (candlestick) chart data for a product.
    *
-   * {@link https://rysk.readme.io/reference/ui-klines}
+   * {@link https://citrex.readme.io/reference/ui-klines}
    *
    * @param productSymbol The product symbol to get data for (btcperp, ethperp, etc.).
    * @param [optionalArgs] (Optional) Query parameters.
@@ -469,7 +469,7 @@ class RyskSDK {
   /**
    * Get a list of all products.
    *
-   * {@link https://rysk.readme.io/reference/list-products}
+   * {@link https://citrex.readme.io/reference/list-products}
    *
    * @returns A promise that resolves with an object containing a list of products, or an error object.
    * @throws {Error} Thrown if an error occurs during the request.
@@ -491,9 +491,9 @@ class RyskSDK {
   /**
    * Get a specific product.
    *
-   * {@link https://rysk.readme.io/reference/get-product} By product ID.
+   * {@link https://citrex.readme.io/reference/get-product} By product ID.
    *
-   * {@link https://rysk.readme.io/reference/get-product-copy} By product symbol.
+   * {@link https://citrex.readme.io/reference/get-product-copy} By product symbol.
    *
    * @param identifier The product symbol or product ID to get.
    * @returns A promise that resolves with an object containing the product, or an error object.
@@ -524,7 +524,7 @@ class RyskSDK {
   /**
    * Get the current server time in unix milliseconds.
    *
-   * {@link https://rysk.readme.io/reference/server-time}
+   * {@link https://citrex.readme.io/reference/server-time}
    *
    * @returns A promise that resolves with an object containing the timestamp, or an error object.
    * @throws {Error} Thrown if an error occurs during the request.
@@ -543,7 +543,7 @@ class RyskSDK {
   /**
    * Get ticker data for a product(s).
    *
-   * {@link https://rysk.readme.io/reference/24hr-ticker-data}
+   * {@link https://citrex.readme.io/reference/24hr-ticker-data}
    *
    * @param [productSymbol] (Optional) The product symbol to get ticker data for. If left blank, data for all tickers is returned.
    * @returns A promise that resolves with an object containing the ticker data, or an error object.
@@ -576,7 +576,7 @@ class RyskSDK {
   /**
    * Get trade history for a product.
    *
-   * {@link https://rysk.readme.io/reference/trade-history}
+   * {@link https://citrex.readme.io/reference/trade-history}
    *
    * @param productSymbol The product symbol to get data for (btcperp, ethperp, etc.).
    * @param [quantity] (Optional) The quantity of trades to fetch. Maximum value is 500. (default: 10).
@@ -618,7 +618,7 @@ class RyskSDK {
    * Cancels and replaces an order on the exchange.
    * Replaced orders enforce an order type of {@link OrderType.LIMIT_MAKER} and a time in force of {@link TimeInForce.GTC}.
    *
-   * {@link https://rysk.readme.io/reference/cancel-and-replace-trade}
+   * {@link https://citrex.readme.io/reference/cancel-and-replace-trade}
    *
    * @param orderId The Id of the order to replace.
    * @param orderArgs The order arguments.
@@ -700,7 +700,7 @@ class RyskSDK {
   /**
    * Cancel all open orders for a specific product.
    *
-   * {@link https://rysk.readme.io/reference/cancel-all-open-orders-trade}
+   * {@link https://citrex.readme.io/reference/cancel-all-open-orders-trade}
    *
    * @param productId The product ID of the orders to be cancelled.
    * @returns A promise that resolves with an object containing the cancellation status, or an error object.
@@ -745,7 +745,7 @@ class RyskSDK {
   /**
    * Cancel an order on the exchange.
    *
-   * {@link https://rysk.readme.io/reference/cancel-order}
+   * {@link https://citrex.readme.io/reference/cancel-order}
    *
    * @param orderId The unique order ID of the order to be cancelled.
    * @param productId The product ID of the order to be cancelled.
@@ -791,9 +791,9 @@ class RyskSDK {
 
   /**
    * Cancels multiple orders on the exchange.
-   * This function is a wrapper around {@link RyskSDK.cancelOrder} and takes the same args in list form.
+   * This function is a wrapper around {@link CitrexSDK.cancelOrder} and takes the same args in list form.
    *
-   * @param ordersArgs A list of order arguments. See {@link RyskSDK.cancelOrder} for further details.
+   * @param ordersArgs A list of order arguments. See {@link CitrexSDK.cancelOrder} for further details.
    * @returns A promise that resolves to a list of objects with either the cancellation status or an error.
    */
   public cancelOrders = async (
@@ -805,7 +805,7 @@ class RyskSDK {
   /**
    * Deposits a specified quantity of an asset.
    *
-   * {@link https://rysk.readme.io/reference/depositing}
+   * {@link https://citrex.readme.io/reference/depositing}
    *
    * @param quantity The amount of the asset to deposit.
    * @param [asset] The type of asset to deposit (default: USDC).
@@ -889,7 +889,7 @@ class RyskSDK {
   /**
    * Get health metrics for the account.
    *
-   * {@link https://rysk.readme.io/reference/get-account-health}
+   * {@link https://citrex.readme.io/reference/get-account-health}
    *
    * @returns A promise that resolves to an object with either the account health or an error.
    * @throws {Error} Thrown if an error occurs during the order process. The error object may contain details from the API response or a generic message.
@@ -925,7 +925,7 @@ class RyskSDK {
   /**
    * List all margin balances for the account and sub-account.
    *
-   * {@link https://rysk.readme.io/reference/get-spot-position}
+   * {@link https://citrex.readme.io/reference/get-spot-position}
    *
    * Note: The `asset` key for each balance object will match one of the values found in the {@link MarginAssets} enum.
    *
@@ -981,7 +981,7 @@ class RyskSDK {
    * List all open orders for the account and sub-account.
    * An optional product symbol can be passed to limit the results to just that product.
    *
-   * {@link https://rysk.readme.io/reference/list-open-orders}
+   * {@link https://citrex.readme.io/reference/list-open-orders}
    *
    * @param [productSymbol] (Optional) A specific product symbol to fetch positions for.
    * @returns A promise that resolves to an object with either the list of open orders or an error.
@@ -1023,7 +1023,7 @@ class RyskSDK {
    * List all positions for the account and sub-account.
    * An optional product symbol can be passed to limit the results to just that product.
    *
-   * {@link https://rysk.readme.io/reference/get-perpetual-positions}
+   * {@link https://citrex.readme.io/reference/get-perpetual-positions}
    *
    * @param [productSymbol] (Optional) A specific product symbol to fetch positions for.
    * @returns A promise that resolves to an object with either the list of positions or an error.
@@ -1064,7 +1064,7 @@ class RyskSDK {
   /**
    * Places an order on the exchange.
    *
-   * {@link https://rysk.readme.io/reference/place-order}
+   * {@link https://citrex.readme.io/reference/place-order}
    *
    * @param orderArgs The order arguments.
    * @param [orderArgs.expiration] (Optional) The expiration time of the order in milliseconds (default: now + 30 days).
@@ -1159,9 +1159,9 @@ class RyskSDK {
 
   /**
    * Places multiple orders on the exchange.
-   * This function is a wrapper around {@link RyskSDK.placeOrder} and takes the same args in list form.
+   * This function is a wrapper around {@link CitrexSDK.placeOrder} and takes the same args in list form.
    *
-   * @param ordersArgs A list of order arguments. See {@link RyskSDK.placeOrder} for further details.
+   * @param ordersArgs A list of order arguments. See {@link CitrexSDK.placeOrder} for further details.
    * @returns A promise that resolves to a list of objects with either the order or an error.
    */
   public placeOrders = async (ordersArgs: OrderArgs[]): Promise<PlaceOrderReturnType[]> => {
@@ -1171,7 +1171,7 @@ class RyskSDK {
   /**
    * Withdraw a specified quantity of an asset.
    *
-   * {@link https://rysk.readme.io/reference/withdraw}
+   * {@link https://citrex.readme.io/reference/withdraw}
    *
    * @param quantity The amount of the asset to withdraw.
    * @param [asset] The type of asset to withdraw (default: USDC).
@@ -1231,4 +1231,4 @@ class RyskSDK {
   }
 }
 
-export default RyskSDK
+export default CitrexSDK

@@ -3,7 +3,7 @@ import type { HexString } from 'src/types'
 import { recoverTypedDataAddress } from 'viem'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 
-import RyskSDK from 'src'
+import CitrexSDK from 'src'
 import EIP712 from 'src/ABI/EIP712'
 import {
   address,
@@ -14,7 +14,7 @@ import {
   privateKey,
 } from 'vitest/utils'
 
-describe('The RyskSDK', () => {
+describe('The CitrexSDK', () => {
   beforeEach(() => {
     vi.restoreAllMocks()
     vi.useFakeTimers()
@@ -25,7 +25,7 @@ describe('The RyskSDK', () => {
     it('should allow a user to fetch their balances', async () => {
       fetchMock.mockResponse(JSON.stringify(mockBalances))
 
-      const Client = new RyskSDK(privateKey)
+      const Client = new CitrexSDK(privateKey)
 
       const result = await Client.listBalances()
       const call = fetchMock.mock.calls[0]
@@ -44,7 +44,7 @@ describe('The RyskSDK', () => {
       ).toEqual(address)
       expect(call).toMatchInlineSnapshot(`
         [
-          "https://api.staging.rysk.finance/v1/balances?account=0xb47B0b1e44B932Ae9Bb01817E7010A553A965Ea8&signature=0xc95135c26cf468885196ee0ef87cfbc80ee88b7c41df7498c9b73cdcc2cca17946f0cd1dc60b1a2fbd5c3fddfc3559613085d28be218b52fc704f278ad664a901b&subAccountId=1",
+          "https://api.staging.citrex.markets/v1/balances?account=0xb47B0b1e44B932Ae9Bb01817E7010A553A965Ea8&signature=0xc95135c26cf468885196ee0ef87cfbc80ee88b7c41df7498c9b73cdcc2cca17946f0cd1dc60b1a2fbd5c3fddfc3559613085d28be218b52fc704f278ad664a901b&subAccountId=1",
           undefined,
         ]
       `)
@@ -63,7 +63,7 @@ describe('The RyskSDK', () => {
     it('should handle an error during the order process', async () => {
       fetchMock.mockResponse(JSON.stringify({ error: 'A known error occurred' }))
 
-      const Client = new RyskSDK(privateKey)
+      const Client = new CitrexSDK(privateKey)
 
       const result = await Client.listBalances()
 
@@ -78,7 +78,7 @@ describe('The RyskSDK', () => {
     it('should handle an unknown error', async () => {
       fetchMock.mockReject(new Error('An unknown error occurred'))
 
-      const Client = new RyskSDK(privateKey)
+      const Client = new CitrexSDK(privateKey)
 
       const result = await Client.listBalances()
 
@@ -93,7 +93,7 @@ describe('The RyskSDK', () => {
     it('should allow a user to fetch their positions', async () => {
       fetchMock.mockResponse(JSON.stringify(mockPositions))
 
-      const Client = new RyskSDK(privateKey)
+      const Client = new CitrexSDK(privateKey)
 
       const result = await Client.listPositions()
       const call = fetchMock.mock.calls[0]
@@ -112,7 +112,7 @@ describe('The RyskSDK', () => {
       ).toEqual(address)
       expect(call).toMatchInlineSnapshot(`
         [
-          "https://api.staging.rysk.finance/v1/positionRisk?account=0xb47B0b1e44B932Ae9Bb01817E7010A553A965Ea8&signature=0xc95135c26cf468885196ee0ef87cfbc80ee88b7c41df7498c9b73cdcc2cca17946f0cd1dc60b1a2fbd5c3fddfc3559613085d28be218b52fc704f278ad664a901b&subAccountId=1",
+          "https://api.staging.citrex.markets/v1/positionRisk?account=0xb47B0b1e44B932Ae9Bb01817E7010A553A965Ea8&signature=0xc95135c26cf468885196ee0ef87cfbc80ee88b7c41df7498c9b73cdcc2cca17946f0cd1dc60b1a2fbd5c3fddfc3559613085d28be218b52fc704f278ad664a901b&subAccountId=1",
           undefined,
         ]
       `)
@@ -157,14 +157,14 @@ describe('The RyskSDK', () => {
     it('should allow a user to fetch their positions for a specified product symbol', async () => {
       fetchMock.mockResponse(JSON.stringify([mockPositions[1]]))
 
-      const Client = new RyskSDK(privateKey)
+      const Client = new CitrexSDK(privateKey)
 
       const result = await Client.listPositions('blastperp')
       const call = fetchMock.mock.calls[0]
 
       expect(call).toMatchInlineSnapshot(`
         [
-          "https://api.staging.rysk.finance/v1/positionRisk?account=0xb47B0b1e44B932Ae9Bb01817E7010A553A965Ea8&signature=0xc95135c26cf468885196ee0ef87cfbc80ee88b7c41df7498c9b73cdcc2cca17946f0cd1dc60b1a2fbd5c3fddfc3559613085d28be218b52fc704f278ad664a901b&subAccountId=1&symbol=blastperp",
+          "https://api.staging.citrex.markets/v1/positionRisk?account=0xb47B0b1e44B932Ae9Bb01817E7010A553A965Ea8&signature=0xc95135c26cf468885196ee0ef87cfbc80ee88b7c41df7498c9b73cdcc2cca17946f0cd1dc60b1a2fbd5c3fddfc3559613085d28be218b52fc704f278ad664a901b&subAccountId=1&symbol=blastperp",
           undefined,
         ]
       `)
@@ -193,7 +193,7 @@ describe('The RyskSDK', () => {
     it('should handle an error during the order process', async () => {
       fetchMock.mockResponse(JSON.stringify({ error: 'A known error occurred' }))
 
-      const Client = new RyskSDK(privateKey)
+      const Client = new CitrexSDK(privateKey)
 
       const result = await Client.listPositions()
 
@@ -208,7 +208,7 @@ describe('The RyskSDK', () => {
     it('should handle an unknown error', async () => {
       fetchMock.mockReject(new Error('An unknown error occurred'))
 
-      const Client = new RyskSDK(privateKey)
+      const Client = new CitrexSDK(privateKey)
 
       const result = await Client.listPositions()
 
@@ -223,7 +223,7 @@ describe('The RyskSDK', () => {
     it('should allow a user to fetch their positions', async () => {
       fetchMock.mockResponse(JSON.stringify(mockOpenOrders))
 
-      const Client = new RyskSDK(privateKey)
+      const Client = new CitrexSDK(privateKey)
 
       const result = await Client.listOpenOrders()
       const call = fetchMock.mock.calls[0]
@@ -242,7 +242,7 @@ describe('The RyskSDK', () => {
       ).toEqual(address)
       expect(call).toMatchInlineSnapshot(`
         [
-          "https://api.staging.rysk.finance/v1/openOrders?account=0xb47B0b1e44B932Ae9Bb01817E7010A553A965Ea8&signature=0xc95135c26cf468885196ee0ef87cfbc80ee88b7c41df7498c9b73cdcc2cca17946f0cd1dc60b1a2fbd5c3fddfc3559613085d28be218b52fc704f278ad664a901b&subAccountId=1",
+          "https://api.staging.citrex.markets/v1/openOrders?account=0xb47B0b1e44B932Ae9Bb01817E7010A553A965Ea8&signature=0xc95135c26cf468885196ee0ef87cfbc80ee88b7c41df7498c9b73cdcc2cca17946f0cd1dc60b1a2fbd5c3fddfc3559613085d28be218b52fc704f278ad664a901b&subAccountId=1",
           undefined,
         ]
       `)
@@ -295,14 +295,14 @@ describe('The RyskSDK', () => {
     it('should allow a user to fetch their positions for a specified product symbol', async () => {
       fetchMock.mockResponse(JSON.stringify([mockOpenOrders[1]]))
 
-      const Client = new RyskSDK(privateKey)
+      const Client = new CitrexSDK(privateKey)
 
       const result = await Client.listOpenOrders('blastperp')
       const call = fetchMock.mock.calls[0]
 
       expect(call).toMatchInlineSnapshot(`
         [
-          "https://api.staging.rysk.finance/v1/openOrders?account=0xb47B0b1e44B932Ae9Bb01817E7010A553A965Ea8&signature=0xc95135c26cf468885196ee0ef87cfbc80ee88b7c41df7498c9b73cdcc2cca17946f0cd1dc60b1a2fbd5c3fddfc3559613085d28be218b52fc704f278ad664a901b&subAccountId=1&symbol=blastperp",
+          "https://api.staging.citrex.markets/v1/openOrders?account=0xb47B0b1e44B932Ae9Bb01817E7010A553A965Ea8&signature=0xc95135c26cf468885196ee0ef87cfbc80ee88b7c41df7498c9b73cdcc2cca17946f0cd1dc60b1a2fbd5c3fddfc3559613085d28be218b52fc704f278ad664a901b&subAccountId=1&symbol=blastperp",
           undefined,
         ]
       `)
@@ -335,7 +335,7 @@ describe('The RyskSDK', () => {
     it('should handle an error during the order process', async () => {
       fetchMock.mockResponse(JSON.stringify({ error: 'A known error occurred' }))
 
-      const Client = new RyskSDK(privateKey)
+      const Client = new CitrexSDK(privateKey)
 
       const result = await Client.listOpenOrders()
 
@@ -350,7 +350,7 @@ describe('The RyskSDK', () => {
     it('should handle an unknown error', async () => {
       fetchMock.mockReject(new Error('An unknown error occurred'))
 
-      const Client = new RyskSDK(privateKey)
+      const Client = new CitrexSDK(privateKey)
 
       const result = await Client.listOpenOrders()
 
@@ -371,7 +371,7 @@ describe('The RyskSDK', () => {
         }),
       )
 
-      const Client = new RyskSDK(privateKey)
+      const Client = new CitrexSDK(privateKey)
 
       const result = await Client.getAccountHealth()
 
@@ -399,7 +399,7 @@ describe('The RyskSDK', () => {
     it('should handle an error during the process', async () => {
       fetchMock.mockResponse(JSON.stringify({ error: 'A known error occurred', success: false }))
 
-      const Client = new RyskSDK(privateKey)
+      const Client = new CitrexSDK(privateKey)
 
       const result = await Client.getAccountHealth()
 
@@ -414,7 +414,7 @@ describe('The RyskSDK', () => {
     it('should handle an unknown error', async () => {
       fetchMock.mockReject(new Error('An unknown error occurred'))
 
-      const Client = new RyskSDK(privateKey)
+      const Client = new CitrexSDK(privateKey)
 
       const result = await Client.getAccountHealth()
 

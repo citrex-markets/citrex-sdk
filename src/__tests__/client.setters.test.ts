@@ -1,15 +1,15 @@
 import { beforeEach, describe, expect, it } from 'vitest'
 
-import RyskSDK from 'src'
+import CitrexSDK from 'src'
 import { privateKey } from 'vitest/utils'
 
-describe('The RyskSDK', () => {
+describe('The CitrexSDK', () => {
   beforeEach(() => {
     fetchMock.resetMocks()
   })
 
   it('should allow the sub-account to be changed', async () => {
-    const Client = new RyskSDK(privateKey)
+    const Client = new CitrexSDK(privateKey)
 
     await Client.placeOrder({
       isBuy: true,

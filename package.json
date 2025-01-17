@@ -1,9 +1,9 @@
 {
-  "name": "rysk-sdk",
+  "name": "citrex-sdk",
   "version": "1.2.0",
-  "description": "A TypeScript SDK for Rysk finance.",
+  "description": "A TypeScript SDK for Citrex Markets.",
   "keywords": [
-    "Rysk",
+    "Citrex",
     "api",
     "crypto",
     "cryptocurrency",
@@ -16,25 +16,15 @@
     "trading",
     "vault"
   ],
-  "homepage": "https://rysk.finance/",
-  "bugs": "https://github.com/MeanBoyCousin/rysk-sdk/issues",
-  "repository": "https://github.com/MeanBoyCousin/rysk-sdk.git",
+  "homepage": "https://citrex.markets/",
+  "bugs": "https://github.com/citrex-markets/citrex-sdk/issues",
+  "repository": "https://github.com/citrex-markets/citrex-sdk.git",
   "license": "MIT",
   "author": {
-    "name": "Tim Dunphy",
-    "email": "tim@rysk.finance",
-    "web": "https://rysk.finance/"
+    "name": "Citrex Markets",
+    "email": "info@citrex.markets",
+    "web": "https://citrex.markets/"
   },
-  "contributors": [
-    {
-      "name": "Tim Dunphy",
-      "email": "tim@rysk.finance"
-    },
-    {
-      "name": "Jack",
-      "email": "jack@rysk.finance"
-    }
-  ],
   "type": "module",
   "exports": {
     ".": {

@@ -1,7 +1,7 @@
 {
   "name": "citrex-sdk",
   "version": "1.0.1",
-  "description": "A TypeScript SDK for Citrex Markets.",
+  "description": "A TypeScript SDK for Citrex Markets",
   "keywords": [
     "Citrex",
     "api",

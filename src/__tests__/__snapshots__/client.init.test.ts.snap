@@ -23,42 +23,38 @@ CitrexSDK {
   "chain": {
     "blockExplorers": {
       "default": {
-        "apiUrl": "https://api-sepolia.arbiscan.io/api",
-        "name": "Arbiscan",
-        "url": "https://sepolia.arbiscan.io",
-      },
-    },
-    "contracts": {
-      "multicall3": {
-        "address": "0xca11bde05977b3631167028862be2a173976ca11",
-        "blockCreated": 81930,
+        "name": "Seitrace",
+        "url": "https://seitrace.com",
       },
     },
     "fees": undefined,
     "formatters": undefined,
-    "id": 421614,
-    "name": "Arbitrum Sepolia",
+    "id": 1328,
+    "name": "Sei Testnet",
     "nativeCurrency": {
       "decimals": 18,
-      "name": "Arbitrum Sepolia Ether",
-      "symbol": "ETH",
+      "name": "Sei",
+      "symbol": "SEI",
     },
     "rpcUrls": {
       "default": {
         "http": [
-          "https://sepolia-rollup.arbitrum.io/rpc",
+          "https://evm-rpc-testnet.sei-apis.com",
+        ],
+        "webSocket": [
+          "wss://evm-ws-testnet.sei-apis.com",
         ],
       },
     },
     "serializers": undefined,
     "testnet": true,
   },
-  "ciaoAddress": "0x71728FDDF90233cc35D61bec7858d7c42A310ACe",
+  "ciaoAddress": "0x0F571400ef7D2aEc68b29e58be3adCE1Bb27f33d",
   "deposit": [Function],
   "domain": {
-    "chainId": 421614n,
+    "chainId": 1328n,
     "name": "citrex",
-    "verifyingContract": "0x27809a3Bd3cf44d855f1BE668bFD16D34bcE157C",
+    "verifyingContract": "0x24f4e9Db8225e6AE220FE89782E4A010aEB7bb14",
     "version": "0.0.0",
   },
   "environment": "testnet",
@@ -79,14 +75,14 @@ CitrexSDK {
     },
   ],
   "marginAssets": {
-    "USDC": "0xb8be1401e65dc08bfb8f832fc1a27a16ca821b05",
+    "USDC": "0x79A59c326C715AC2d31C169C85d1232319E341ce",
   },
   "placeOrder": [Function],
   "placeOrders": [Function],
   "publicClient": {},
   "rpc": "https://test-rpc.quiknode.pro",
   "subAccountId": 2,
-  "verifierAddress": "0x27809a3Bd3cf44d855f1BE668bFD16D34bcE157C",
+  "verifierAddress": "0x24f4e9Db8225e6AE220FE89782E4A010aEB7bb14",
   "withdraw": [Function],
 }
 `;
@@ -114,42 +110,38 @@ CitrexSDK {
   "chain": {
     "blockExplorers": {
       "default": {
-        "apiUrl": "https://api-sepolia.arbiscan.io/api",
-        "name": "Arbiscan",
-        "url": "https://sepolia.arbiscan.io",
-      },
-    },
-    "contracts": {
-      "multicall3": {
-        "address": "0xca11bde05977b3631167028862be2a173976ca11",
-        "blockCreated": 81930,
+        "name": "Seitrace",
+        "url": "https://seitrace.com",
       },
     },
     "fees": undefined,
     "formatters": undefined,
-    "id": 421614,
-    "name": "Arbitrum Sepolia",
+    "id": 1328,
+    "name": "Sei Testnet",
     "nativeCurrency": {
       "decimals": 18,
-      "name": "Arbitrum Sepolia Ether",
-      "symbol": "ETH",
+      "name": "Sei",
+      "symbol": "SEI",
     },
     "rpcUrls": {
       "default": {
         "http": [
-          "https://sepolia-rollup.arbitrum.io/rpc",
+          "https://evm-rpc-testnet.sei-apis.com",
+        ],
+        "webSocket": [
+          "wss://evm-ws-testnet.sei-apis.com",
         ],
       },
     },
     "serializers": undefined,
     "testnet": true,
   },
-  "ciaoAddress": "0x71728FDDF90233cc35D61bec7858d7c42A310ACe",
+  "ciaoAddress": "0x0F571400ef7D2aEc68b29e58be3adCE1Bb27f33d",
   "deposit": [Function],
   "domain": {
-    "chainId": 421614n,
+    "chainId": 1328n,
     "name": "citrex",
-    "verifyingContract": "0x27809a3Bd3cf44d855f1BE668bFD16D34bcE157C",
+    "verifyingContract": "0x24f4e9Db8225e6AE220FE89782E4A010aEB7bb14",
     "version": "0.0.0",
   },
   "environment": "testnet",
@@ -166,14 +158,14 @@ CitrexSDK {
   "listPositions": [Function],
   "logs": [],
   "marginAssets": {
-    "USDC": "0xb8be1401e65dc08bfb8f832fc1a27a16ca821b05",
+    "USDC": "0x79A59c326C715AC2d31C169C85d1232319E341ce",
   },
   "placeOrder": [Function],
   "placeOrders": [Function],
   "publicClient": {},
-  "rpc": "https://sepolia-rollup.arbitrum.io/rpc",
+  "rpc": "https://evm-rpc-testnet.sei-apis.com",
   "subAccountId": 1,
-  "verifierAddress": "0x27809a3Bd3cf44d855f1BE668bFD16D34bcE157C",
+  "verifierAddress": "0x24f4e9Db8225e6AE220FE89782E4A010aEB7bb14",
   "withdraw": [Function],
 }
 `;

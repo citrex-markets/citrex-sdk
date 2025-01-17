@@ -5,8 +5,8 @@ export const address = '0xb47B0b1e44B932Ae9Bb01817E7010A553A965Ea8'
 export const privateKey = '0xa608cd43cbc3d59bc51443f475b96a4654e956d6cc91783598a8e76a34000174'
 
 // Contract addresses
-export const ciaoAddress = '0x71728FDDF90233cc35D61bec7858d7c42A310ACe'
-export const USDC = '0xb8be1401e65dc08bfb8f832fc1a27a16ca821b05'
+export const ciaoAddress = '0x0F571400ef7D2aEc68b29e58be3adCE1Bb27f33d'
+export const USDC = '0x79A59c326C715AC2d31C169C85d1232319E341ce'
 
 // API response mocks
 export const productsData = [

@@ -9,30 +9,32 @@ describe('The CHAINS constant', () => {
         "mainnet": {
           "blockExplorers": {
             "default": {
-              "apiUrl": "https://api.arbiscan.io/api",
-              "name": "Arbiscan",
-              "url": "https://arbiscan.io",
+              "apiUrl": "https://seitrace.com/pacific-1/api",
+              "name": "Seitrace",
+              "url": "https://seitrace.com",
             },
           },
           "contracts": {
             "multicall3": {
-              "address": "0xca11bde05977b3631167028862be2a173976ca11",
-              "blockCreated": 7654707,
+              "address": "0xcA11bde05977b3631167028862bE2a173976CA11",
             },
           },
           "fees": undefined,
           "formatters": undefined,
-          "id": 42161,
-          "name": "Arbitrum One",
+          "id": 1329,
+          "name": "Sei Network",
           "nativeCurrency": {
             "decimals": 18,
-            "name": "Ether",
-            "symbol": "ETH",
+            "name": "Sei",
+            "symbol": "SEI",
           },
           "rpcUrls": {
             "default": {
               "http": [
-                "https://arb1.arbitrum.io/rpc",
+                "https://evm-rpc.sei-apis.com/",
+              ],
+              "webSocket": [
+                "wss://evm-ws.sei-apis.com/",
               ],
             },
           },
@@ -41,30 +43,26 @@ describe('The CHAINS constant', () => {
         "testnet": {
           "blockExplorers": {
             "default": {
-              "apiUrl": "https://api-sepolia.arbiscan.io/api",
-              "name": "Arbiscan",
-              "url": "https://sepolia.arbiscan.io",
-            },
-          },
-          "contracts": {
-            "multicall3": {
-              "address": "0xca11bde05977b3631167028862be2a173976ca11",
-              "blockCreated": 81930,
+              "name": "Seitrace",
+              "url": "https://seitrace.com",
             },
           },
           "fees": undefined,
           "formatters": undefined,
-          "id": 421614,
-          "name": "Arbitrum Sepolia",
+          "id": 1328,
+          "name": "Sei Testnet",
           "nativeCurrency": {
             "decimals": 18,
-            "name": "Arbitrum Sepolia Ether",
-            "symbol": "ETH",
+            "name": "Sei",
+            "symbol": "SEI",
           },
           "rpcUrls": {
             "default": {
               "http": [
-                "https://sepolia-rollup.arbitrum.io/rpc",
+                "https://evm-rpc-testnet.sei-apis.com",
+              ],
+              "webSocket": [
+                "wss://evm-ws-testnet.sei-apis.com",
               ],
             },
           },

@@ -112,7 +112,7 @@ describe('The CitrexSDK', () => {
       ).toEqual(address)
       expect(call).toMatchInlineSnapshot(`
         [
-          "https://api.staging.citrex.markets/v1/positionRisk?account=0xb47B0b1e44B932Ae9Bb01817E7010A553A965Ea8&signature=0x9e614af5ce7afc53fa791699a964bf2709ffa50643fa8401ee93fe2c4845c61337c19d5ac5f9619eff38f956fcce81ff76c7d5f34e76163fcdc9e93f8dfc875c1c&subAccountId=1",
+          "https://api.staging.citrex.markets/v1/positionRisk?account=0xb47B0b1e44B932Ae9Bb01817E7010A553A965Ea8&signature=0xfceac826840740869c72e2509e0a8d3eb2e99bd12b1fd016985b7961e0174fc53237774e1605d2bc7dea31a1a8a3f313dd4382b0ee5ca522a738ccb86853be171c&subAccountId=1",
           undefined,
         ]
       `)
@@ -164,7 +164,7 @@ describe('The CitrexSDK', () => {
 
       expect(call).toMatchInlineSnapshot(`
         [
-          "https://api.staging.citrex.markets/v1/positionRisk?account=0xb47B0b1e44B932Ae9Bb01817E7010A553A965Ea8&signature=0x9e614af5ce7afc53fa791699a964bf2709ffa50643fa8401ee93fe2c4845c61337c19d5ac5f9619eff38f956fcce81ff76c7d5f34e76163fcdc9e93f8dfc875c1c&subAccountId=1&symbol=blastperp",
+          "https://api.staging.citrex.markets/v1/positionRisk?account=0xb47B0b1e44B932Ae9Bb01817E7010A553A965Ea8&signature=0xfceac826840740869c72e2509e0a8d3eb2e99bd12b1fd016985b7961e0174fc53237774e1605d2bc7dea31a1a8a3f313dd4382b0ee5ca522a738ccb86853be171c&subAccountId=1&symbol=blastperp",
           undefined,
         ]
       `)
@@ -242,7 +242,7 @@ describe('The CitrexSDK', () => {
       ).toEqual(address)
       expect(call).toMatchInlineSnapshot(`
         [
-          "https://api.staging.citrex.markets/v1/openOrders?account=0xb47B0b1e44B932Ae9Bb01817E7010A553A965Ea8&signature=0x9e614af5ce7afc53fa791699a964bf2709ffa50643fa8401ee93fe2c4845c61337c19d5ac5f9619eff38f956fcce81ff76c7d5f34e76163fcdc9e93f8dfc875c1c&subAccountId=1",
+          "https://api.staging.citrex.markets/v1/openOrders?account=0xb47B0b1e44B932Ae9Bb01817E7010A553A965Ea8&signature=0xfceac826840740869c72e2509e0a8d3eb2e99bd12b1fd016985b7961e0174fc53237774e1605d2bc7dea31a1a8a3f313dd4382b0ee5ca522a738ccb86853be171c&subAccountId=1",
           undefined,
         ]
       `)
@@ -302,7 +302,7 @@ describe('The CitrexSDK', () => {
 
       expect(call).toMatchInlineSnapshot(`
         [
-          "https://api.staging.citrex.markets/v1/openOrders?account=0xb47B0b1e44B932Ae9Bb01817E7010A553A965Ea8&signature=0x9e614af5ce7afc53fa791699a964bf2709ffa50643fa8401ee93fe2c4845c61337c19d5ac5f9619eff38f956fcce81ff76c7d5f34e76163fcdc9e93f8dfc875c1c&subAccountId=1&symbol=blastperp",
+          "https://api.staging.citrex.markets/v1/openOrders?account=0xb47B0b1e44B932Ae9Bb01817E7010A553A965Ea8&signature=0xfceac826840740869c72e2509e0a8d3eb2e99bd12b1fd016985b7961e0174fc53237774e1605d2bc7dea31a1a8a3f313dd4382b0ee5ca522a738ccb86853be171c&subAccountId=1&symbol=blastperp",
           undefined,
         ]
       `)

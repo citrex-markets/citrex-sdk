@@ -115,7 +115,7 @@ class CitrexSDK {
     this.chain = chain
     this.ciaoAddress = CIAO_ADDRESS[environment]
     this.domain = {
-      name: 'citrex',
+      name: 'ciao',
       version: '0.0.0',
       chainId: BigInt(chain.id),
       verifyingContract,

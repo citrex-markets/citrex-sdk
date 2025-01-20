@@ -55,7 +55,7 @@ describe('The CitrexSDK', () => {
         [
           "https://api.staging.citrex.markets/v1/order",
           {
-            "body": "{"expiration":1712421770000,"nonce":1709829780000000,"price":"3536200000000000000000","quantity":"1000000000000000","signature":"0xa33dd7654df48204f91bda657f169fbc6ac75054054c04437ee172f0fd1f09dd41a20d58da3dbdad07a039fbb4d270c6571af03caf54552267bb9a4f4647f1841b","account":"0xb47B0b1e44B932Ae9Bb01817E7010A553A965Ea8","isBuy":true,"orderType":2,"productId":1002,"subAccountId":1,"timeInForce":1}",
+            "body": "{"expiration":1712421770000,"nonce":1709829780000000,"price":"3536200000000000000000","quantity":"1000000000000000","signature":"0x91e1b9439cae06a953d42cd053f347d20c7983d2f9e55d1669b1395d26e0f1e35d00f0d1484f9719717cf3d8c1ad8f689e1a70fe5877ca11fbe5639ebe4421431c","account":"0xb47B0b1e44B932Ae9Bb01817E7010A553A965Ea8","isBuy":true,"orderType":2,"productId":1002,"subAccountId":1,"timeInForce":1}",
             "method": "POST",
           },
         ]
@@ -106,7 +106,7 @@ describe('The CitrexSDK', () => {
         [
           "https://api.staging.citrex.markets/v1/order",
           {
-            "body": "{"expiration":1800000000000,"nonce":123,"price":"3450000000000000000000","quantity":"1000000000000000","signature":"0x40f46fa7142e20092fc02faf943852a958d2ad361dd5554dd5e985689c9a11902253f3ea69ac8b9591fb258c658ed204b6b88bd3c440788e6788c8b816575d541c","account":"0xb47B0b1e44B932Ae9Bb01817E7010A553A965Ea8","isBuy":true,"orderType":0,"productId":1002,"subAccountId":1,"timeInForce":2}",
+            "body": "{"expiration":1800000000000,"nonce":123,"price":"3450000000000000000000","quantity":"1000000000000000","signature":"0x9ad73dd4860cb4d279b70df56e198c2ec4a3051ffc496118530a7fe2c539de822963652118bfb7763169ecc9900062a15cbdfdc780436ee17761845218929b6c1c","account":"0xb47B0b1e44B932Ae9Bb01817E7010A553A965Ea8","isBuy":true,"orderType":0,"productId":1002,"subAccountId":1,"timeInForce":2}",
             "method": "POST",
           },
         ]
@@ -311,7 +311,7 @@ describe('The CitrexSDK', () => {
         [
           "https://api.staging.citrex.markets/v1/order",
           {
-            "body": "{"account":"0xb47B0b1e44B932Ae9Bb01817E7010A553A965Ea8","orderId":"0x3505c6219b1f51cf216e432b153f8637c1fa9342520bd7c780bd80dafe0eed94","productId":1002,"subAccountId":1,"signature":"0x0ac162f9cd29c1d4b82fb0ed40121daa3d3a24de74e3063c3f66a910c7bf1f9334c281110adf4e24045469a1ab25fa4aeed4f685f24ebbb790fb5067082503691b"}",
+            "body": "{"account":"0xb47B0b1e44B932Ae9Bb01817E7010A553A965Ea8","orderId":"0x3505c6219b1f51cf216e432b153f8637c1fa9342520bd7c780bd80dafe0eed94","productId":1002,"subAccountId":1,"signature":"0x9b853e8c36697d552c9ec976b3cb27ae95a65fccdf8ffd2af6d7b5617ef7dd0046ee99e34165c593d22187ecda835c931a7ea6567e098b49afe388e83f604bb81c"}",
             "method": "DELETE",
           },
         ]
@@ -413,7 +413,7 @@ describe('The CitrexSDK', () => {
         [
           "https://api.staging.citrex.markets/v1/openOrders",
           {
-            "body": "{"account":"0xb47B0b1e44B932Ae9Bb01817E7010A553A965Ea8","productId":1002,"subAccountId":1,"signature":"0x391d904d99756d15ccbe13a261b5deee964e1c586974fa9adce8b99a6a89c47804b615aa660de6011a3199714eeef4a3b838cca309e7f22c32fd8c2d97e12ae01b"}",
+            "body": "{"account":"0xb47B0b1e44B932Ae9Bb01817E7010A553A965Ea8","productId":1002,"subAccountId":1,"signature":"0xe345347384b5fbfa507fccf2d497e87ff5096d00370a793f5639e1897325a629598c0ec53e8fb2f56b32d1b35c65e9c8ac69a2354be724255ac11b1285a1ff111c"}",
             "method": "DELETE",
           },
         ]
@@ -488,7 +488,7 @@ describe('The CitrexSDK', () => {
         [
           "https://api.staging.citrex.markets/v1/order/cancel-and-replace",
           {
-            "body": "{"idToCancel":"0x08d4079c501e5fbb2153c7fe785ea4648ffcdac411d93511edcb5b18aecc158f","newOrder":{"expiration":1712421760000,"nonce":1709829760000000,"price":"3455000000000000000000","quantity":"1000000000000000","signature":"0xed64cd393695d51be0c492ff4d313a0554ceb03791493564c5419b06cde72e684ebdc360481194b472d2e1a0e261db2163be2298552a39e6f4d8faca802e8ccc1c","account":"0xb47B0b1e44B932Ae9Bb01817E7010A553A965Ea8","isBuy":true,"orderType":1,"productId":1002,"subAccountId":1,"timeInForce":0}}",
+            "body": "{"idToCancel":"0x08d4079c501e5fbb2153c7fe785ea4648ffcdac411d93511edcb5b18aecc158f","newOrder":{"expiration":1712421760000,"nonce":1709829760000000,"price":"3455000000000000000000","quantity":"1000000000000000","signature":"0x7a98ea451d77e3ca9afeb0e2f06a453ccf7b21bed672ec01ea3120179f3323e431202011d3d4cfa40778361cd65cca345bdd31bf451816d72eba64256b30d9331c","account":"0xb47B0b1e44B932Ae9Bb01817E7010A553A965Ea8","isBuy":true,"orderType":1,"productId":1002,"subAccountId":1,"timeInForce":0}}",
             "method": "POST",
           },
         ]
@@ -558,7 +558,7 @@ describe('The CitrexSDK', () => {
         [
           "https://api.staging.citrex.markets/v1/order/cancel-and-replace",
           {
-            "body": "{"idToCancel":"0x08d4079c501e5fbb2153c7fe785ea4648ffcdac411d93511edcb5b18aecc158f","newOrder":{"expiration":1800000000000,"nonce":123,"price":"3455000000000000000000","quantity":"1000000000000000","signature":"0xcda7ed8611f2d94e153a6efafa0c96e089f76cca5f9aa5b42f19a697d540ba5a2c06b640571ebd0c88407af4dcc60f291a4839f86d5bf975262e50a8eabf07ba1c","account":"0xb47B0b1e44B932Ae9Bb01817E7010A553A965Ea8","isBuy":true,"orderType":1,"productId":1002,"subAccountId":1,"timeInForce":0}}",
+            "body": "{"idToCancel":"0x08d4079c501e5fbb2153c7fe785ea4648ffcdac411d93511edcb5b18aecc158f","newOrder":{"expiration":1800000000000,"nonce":123,"price":"3455000000000000000000","quantity":"1000000000000000","signature":"0x7005826f08fa8987ed8086e70368f49aeb39494aaca1b76be7ee703bb03387ef430d23d56f89005e268e7e83cf851a2d275915214d82227ce0e1e25330d8c43e1b","account":"0xb47B0b1e44B932Ae9Bb01817E7010A553A965Ea8","isBuy":true,"orderType":1,"productId":1002,"subAccountId":1,"timeInForce":0}}",
             "method": "POST",
           },
         ]

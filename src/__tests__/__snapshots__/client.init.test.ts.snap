@@ -53,7 +53,7 @@ CitrexSDK {
   "deposit": [Function],
   "domain": {
     "chainId": 1328n,
-    "name": "citrex",
+    "name": "ciao",
     "verifyingContract": "0x24f4e9Db8225e6AE220FE89782E4A010aEB7bb14",
     "version": "0.0.0",
   },
@@ -140,7 +140,7 @@ CitrexSDK {
   "deposit": [Function],
   "domain": {
     "chainId": 1328n,
-    "name": "citrex",
+    "name": "ciao",
     "verifyingContract": "0x24f4e9Db8225e6AE220FE89782E4A010aEB7bb14",
     "version": "0.0.0",
   },

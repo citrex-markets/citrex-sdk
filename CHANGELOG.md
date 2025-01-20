@@ -26,3 +26,8 @@
 ## 1.2.1
 
 - Update to Citrex v2
+
+## 1.2.2
+
+- Fixed wrong name in EIP712 domain.
+- Updated wrong address in README.
